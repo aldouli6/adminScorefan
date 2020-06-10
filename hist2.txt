@@ -1,0 +1,16 @@
+  469  php artisan migrate:rollback --step=1
+  470  php artisan infyom:rollback League scaffold
+  471  php artisan infyom:scaffold League
+  472  php artisan migrate
+  473  php artisan vendor:publish --tag=datatables-buttons --force
+  474  php artisan vendor:publish --tag=datatables-html
+  475  git clone https://github.com/aldouli6/adminScorefan.git
+  476  cd adminScorefan
+  477  cd scorefan-admin
+  478  php artisan migrate
+  479  composer u -vvv
+  480  php artisan vendor:pub√lish
+  481  php artisan vendor:publish
+  482  php artisan ui bootstrap --auth
+  483  php artisan infyom:publish
+  484  php artisan infyom.publish:layout

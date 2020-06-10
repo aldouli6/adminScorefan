@@ -1,0 +1,16 @@
+  472  php artisan migrate
+  473  php artisan vendor:publish --tag=datatables-buttons --force
+  474  php artisan vendor:publish --tag=datatables-html
+  475  git clone https://github.com/aldouli6/adminScorefan.git
+  476  cd adminScorefan
+  477  composer create-project laravel/laravel scorefan-admin
+  478  cd scorefan-admin
+  479  git init\n
+  480  git add .
+  481  git commit -m "initial commit"
+  482  git remote add origin remote https://github.com/aldouli6/adminScorefan.git
+  483  git remote add origin  https://github.com/aldouli6/adminScorefan.git
+  484  git remote -v
+  485  git push -f origin master
+  486  php artisan serve
+  487  php artisan serve
