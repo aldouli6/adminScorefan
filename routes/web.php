@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 Auth::routes(['verify' => true]);
@@ -27,3 +27,27 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
 Route::resource('users', 'UserController')->middleware('auth');
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->middleware('verified');
+
+Route::resource('users', 'UserController')->middleware('auth');
+
+
+
+
+
+
+Route::resource('leagues', 'LeagueController');
+
+Route::resource('tournaments', 'TournamentController');
+
+
+
+
+
+
+
+Route::resource('rounds', 'RoundController');
