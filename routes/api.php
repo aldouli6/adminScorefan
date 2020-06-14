@@ -17,3 +17,26 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('states', 'StateAPIController');
+
+Route::resource('teams', 'TeamAPIController');
+
+Route::resource('matches', 'MatchAPIController');

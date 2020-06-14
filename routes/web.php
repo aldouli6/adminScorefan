@@ -51,3 +51,31 @@ Route::resource('tournaments', 'TournamentController');
 
 
 Route::resource('rounds', 'RoundController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('states', 'StateController');
+
+Route::resource('teams', 'TeamController');
+
+Route::resource('matches', 'MatchController');

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'add_new'      => 'Add Nuevo',
     'cancel'       => 'Cancel',
     'save'         => 'Save',

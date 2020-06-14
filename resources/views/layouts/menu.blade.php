@@ -18,3 +18,27 @@
     <a href="{{ route('rounds.index') }}"><i class="fa fa-edit"></i><span>@lang('models/rounds.plural')</span></a>
 </li>
 
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="{{ Request::is('states*') ? 'active' : '' }}">
+    <a href="{{ route('states.index') }}"><i class="fa fa-edit"></i><span>@lang('models/states.plural')</span></a>
+</li>
+
+<li class="{{ Request::is('teams*') ? 'active' : '' }}">
+    <a href="{{ route('teams.index') }}"><i class="fa fa-edit"></i><span>@lang('models/teams.plural')</span></a>
+</li>
+
+<li class="{{ Request::is('matches*') ? 'active' : '' }}">
+    <a href="{{ route('matches.index') }}"><i class="fa fa-edit"></i><span>@lang('models/matches.plural')</span></a>
+</li>
+
