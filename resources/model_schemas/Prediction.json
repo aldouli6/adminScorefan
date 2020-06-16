@@ -25,7 +25,7 @@
     },
     {
         "name": "user_id",
-        "dbType": "integer:unsigned:foreign,users,id",
+        "dbType": "biginteger:unsigned:foreign,users,id",
         "htmlType": "selectTable:users:name,id",
         "validations": "required",
         "searchable": true,
@@ -37,8 +37,8 @@
     },
     {
         "name": "match_id",
-        "dbType": "integer:unsigned:foreign,matchs,id",
-        "htmlType": "selectTable:matchs:id,id",
+        "dbType": "integer:unsigned:foreign,matches,id",
+        "htmlType": "selectTable:matches:id,id",
         "validations": "required",
         "searchable": true,
         "fillable": true,

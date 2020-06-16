@@ -79,3 +79,39 @@ Route::resource('states', 'StateController');
 Route::resource('teams', 'TeamController');
 
 Route::resource('matches', 'MatchController');
+
+
+
+
+
+
+
+Route::resource('methods', 'MethodController');
+
+Route::resource('categories', 'CategoryController');
+
+
+
+Route::resource('products', 'ProductController');
+
+
+
+
+
+Route::resource('payments', 'PaymentController');
+
+
+
+
+
+Route::resource('predictions', 'PredictionController');
+
+Route::resource('accessories', 'AccessoryController');
+
+
+
+
+
+Route::resource('results', 'ResultController');
+
+Route::resource('movements', 'MovementController');

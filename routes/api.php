@@ -40,3 +40,39 @@ Route::resource('states', 'StateAPIController');
 Route::resource('teams', 'TeamAPIController');
 
 Route::resource('matches', 'MatchAPIController');
+
+
+
+
+
+
+
+Route::resource('methods', 'MethodAPIController');
+
+Route::resource('categories', 'CategoryAPIController');
+
+
+
+Route::resource('products', 'ProductAPIController');
+
+
+
+
+
+Route::resource('payments', 'PaymentAPIController');
+
+
+
+
+
+Route::resource('predictions', 'PredictionAPIController');
+
+Route::resource('accessories', 'AccessoryAPIController');
+
+
+
+
+
+Route::resource('results', 'ResultAPIController');
+
+Route::resource('movements', 'MovementAPIController');
