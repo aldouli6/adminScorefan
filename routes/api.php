@@ -19,6 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+    Route::post('register', 'Auth\RegisterController@register');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout');
+
+
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::resource('states', 'API\StateAPIController');
+    });
 
 
 
@@ -29,13 +37,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-
-
-
-
-
-
-Route::resource('states', 'StateAPIController');
 
 Route::resource('teams', 'TeamAPIController');
 

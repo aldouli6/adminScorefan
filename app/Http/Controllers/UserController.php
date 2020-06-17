@@ -57,7 +57,7 @@ class UserController extends AppBaseController
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = $this->userRepository->create($input);
-
+        $user->sendEmailVerificationNotification();
         Flash::success('User saved successfully.');
 
         return redirect(route('users.index'));
