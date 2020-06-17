@@ -18,62 +18,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-    Route::post('register', 'Auth\RegisterController@register');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LoginController@logout');
-
-
-    Route::group(['middleware' => 'auth:api'], function() {
-        Route::resource('states', 'API\StateAPIController');
-    });
-
-
-
-
-
-
-
-
-
-
-
-Route::resource('teams', 'TeamAPIController');
-
-Route::resource('matches', 'MatchAPIController');
-
-
-
-
-
-
-
-Route::resource('methods', 'MethodAPIController');
-
-Route::resource('categories', 'CategoryAPIController');
-
-
-
-Route::resource('products', 'ProductAPIController');
-
-
-
-
-
-Route::resource('payments', 'PaymentAPIController');
-
-
-
-
-
-Route::resource('predictions', 'PredictionAPIController');
-
-Route::resource('accessories', 'AccessoryAPIController');
-
-
-
-
-
-Route::resource('results', 'ResultAPIController');
-
-Route::resource('movements', 'MovementAPIController');
+Route::get('/logout', 'Api\AuthController@logout');
+Route::post('/register', 'Api\AuthController@register');
+Route::post('/login', 'Api\AuthController@login');
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::resource('states', 'API\StateAPIController');
+    Route::resource('teams', 'API\TeamAPIController');
+    Route::resource('rounds', 'API\RoundAPIController');
+    Route::resource('leagues', 'API\LeagueAPIController');
+    Route::resource('tournaments', 'API\TournamentAPIController');
+    Route::resource('accessories', 'API\AccessoryAPIController');
+    Route::resource('categories', 'API\CategoryAPIController');
+    Route::resource('matches', 'API\MatchAPIController');
+    Route::resource('results', 'API\ResultAPIController');
+    Route::resource('methods', 'API\MethodAPIController');
+    Route::resource('movements', 'API\MovementAPIController');
+    Route::resource('payments', 'API\PaymentAPIController');
+    Route::resource('products', 'API\ProductAPIController');
+    Route::resource('predictions', 'API\PredictionAPIController');
+});

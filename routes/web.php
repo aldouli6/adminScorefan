@@ -34,9 +34,6 @@ Route::resource('users', 'UserController')->middleware('auth');
 
 
 
-Route::resource('leagues', 'LeagueController');
-
-Route::resource('tournaments', 'TournamentController');
 
 
 
@@ -44,7 +41,10 @@ Route::resource('tournaments', 'TournamentController');
 
 
 
-Route::resource('rounds', 'RoundController');
+
+
+
+
 
 
 
@@ -109,3 +109,9 @@ Route::resource('accessories', 'AccessoryController');
 Route::resource('results', 'ResultController');
 
 Route::resource('movements', 'MovementController');
+
+Route::resource('rounds', 'RoundController');
+
+Route::resource('leagues', 'LeagueController');
+
+Route::resource('tournaments', 'TournamentController');

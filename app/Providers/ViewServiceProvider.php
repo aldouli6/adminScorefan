@@ -34,6 +34,18 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['tournaments.fields'], function ($view) {
+            $leagueItems = League::pluck('name','id')->toArray();
+            $view->with('leagueItems', $leagueItems);
+        });
+        View::composer(['rounds.fields'], function ($view) {
+            $tournamentItems = Tournament::pluck('name','id')->toArray();
+            $view->with('tournamentItems', $tournamentItems);
+        });
+        View::composer(['rounds.fields'], function ($view) {
+            $leagueItems = League::pluck('name','id')->toArray();
+            $view->with('leagueItems', $leagueItems);
+        });
         View::composer(['movements.fields'], function ($view) {
             $productItems = Product::pluck('name','id')->toArray();
             $view->with('productItems', $productItems);

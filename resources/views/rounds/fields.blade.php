@@ -17,7 +17,7 @@
 <!-- Date Time Limit Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_time_limit', __('models/rounds.fields.date_time_limit').':') !!}
-    {!! Form::text('date_time_limit', null, ['class' => 'form-control','id'=>'date_time_limit']) !!}
+    {!! Form::date('date_time_limit', null, ['class' => 'form-control','id'=>'date_time_limit']) !!}
 </div>
 
 @push('scripts')

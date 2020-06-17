@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class League
  * @package App\Models
- * @version June 11, 2020, 1:22 am UTC
+ * @version June 17, 2020, 9:51 pm UTC
  *
  * @property boolean $enabled
  * @property string $name
