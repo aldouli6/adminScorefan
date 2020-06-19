@@ -278,6 +278,10 @@ class ViewServiceProvider extends ServiceProvider
             $leagueItems = League::pluck('name','id')->toArray();
             $view->with('leagueItems', $leagueItems);
         });
+        View::composer(['users.fields'], function ($view) {
+            $teamItems = Team::pluck('name','id')->toArray();
+            $view->with('teamItems', $teamItems);
+        });
         //
     }
 }

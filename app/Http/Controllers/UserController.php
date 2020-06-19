@@ -55,9 +55,10 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
+        // dd($input);
         $input['password'] = Hash::make($input['password']);
         $user = $this->userRepository->create($input);
-        $user->sendEmailVerificationNotification();
+        //$user->sendEmailVerificationNotification();
         Flash::success('User saved successfully.');
 
         return redirect(route('users.index'));
@@ -99,7 +100,6 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-
         return view('users.edit')->with('user', $user);
     }
 
