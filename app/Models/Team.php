@@ -52,7 +52,6 @@ class Team extends Model
      * @var array
      */
     public static $rules = [
-        'logo_url' => 'required',
         'name' => 'required',
         'league_id' => 'required'
     ];

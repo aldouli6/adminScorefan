@@ -55,9 +55,17 @@ class TeamController extends AppBaseController
     public function store(CreateTeamRequest $request)
     {
         $input = $request->all();
-
+        $file=$request->file('logo_url');
         $team = $this->teamRepository->create($input);
-
+        if($file!=null){
+            $formato=($file->getClientOriginalExtension()!='')?$file->getClientOriginalExtension():$request->formato;
+            // dd($team['id']);
+            $nombre='team_'.$team->id.'.'.$formato;
+            $save_path = storage_path().'/app/public/teams';
+            $file->move($save_path, $nombre);
+            $input['logo_url']='teams/'.$nombre;
+            $team = $this->teamRepository->update($input, $team->id);    
+        }
         Flash::success(__('messages.saved', ['model' => __('models/teams.singular')]));
 
         return redirect(route('teams.index'));
@@ -113,15 +121,27 @@ class TeamController extends AppBaseController
      */
     public function update($id, UpdateTeamRequest $request)
     {
-        $team = $this->teamRepository->find($id);
 
+        $team = $this->teamRepository->find($id);
+        $file=$request->file('logo_url');
+	   
         if (empty($team)) {
             Flash::error(__('messages.not_found', ['model' => __('models/teams.singular')]));
 
             return redirect(route('teams.index'));
         }
+        // dd($file);
 
-        $team = $this->teamRepository->update($request->all(), $id);
+        $input = $request->all();
+        if($file!=null){
+            $formato=($file->getClientOriginalExtension()!='')?$file->getClientOriginalExtension():$request->formato;
+            $nombre='team_'.$team->id.'.'.$formato;
+            $save_path = storage_path().'/app/public/teams';
+            $file->move($save_path, $nombre);
+            $input['logo_url']='teams/'.$nombre;
+        }
+        // dd($input);/
+        $team = $this->teamRepository->update($input, $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/teams.singular')]));
 

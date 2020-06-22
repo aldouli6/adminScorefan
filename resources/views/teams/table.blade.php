@@ -13,7 +13,7 @@
         @foreach($teams as $team)
             <tr>
                 <td>{{ $team->enabled }}</td>
-            <td>{{ $team->logo_url }}</td>
+            <td><img style="max-height:200px;" src="{{'/storage/'.$team->logo_url}}"></td>
             <td>{{ $team->name }}</td>
             <td>{{ $team->league_id }}</td>
                 <td>

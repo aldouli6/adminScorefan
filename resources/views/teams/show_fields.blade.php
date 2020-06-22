@@ -7,7 +7,7 @@
 <!-- Logo Url Field -->
 <div class="form-group">
     {!! Form::label('logo_url', __('models/teams.fields.logo_url').':') !!}
-    <p>{{ $team->logo_url }}</p>
+    <p><img style="max-height:200px;" src="{{'/storage/'.$team->logo_url}}"></p>
 </div>
 
 <!-- Name Field -->

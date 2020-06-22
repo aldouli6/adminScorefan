@@ -11,7 +11,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'teams.store']) !!}
+                    {!! Form::open(['route' => 'teams.store','files' => true]) !!}
 
                         @include('teams.fields')
 
