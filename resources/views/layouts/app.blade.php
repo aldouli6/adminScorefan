@@ -36,7 +36,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>Score Fan Admin</b>
+                <b><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 7vw"></b>
             </a>
 
             <!-- Header Navbar -->

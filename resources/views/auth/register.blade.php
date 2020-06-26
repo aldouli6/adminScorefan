@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator | Registration Page</title>
+    <title>Score Fan | Registro</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -34,7 +34,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+        <a href="{{ url('/home') }}"><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 15vw">
     </div>
 
     <div class="register-box-body">
@@ -90,9 +90,9 @@
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
-                        <label>
+                        <!-- <label>
                             <input type="checkbox"> @lang('auth.registration.i_agree') <a href="#">@lang('auth.registration.terms')</a>
-                        </label>
+                        </label> -->
                     </div>
                 </div>
                 <!-- /.col -->

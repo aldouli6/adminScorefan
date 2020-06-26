@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator</title>
+    <title>Score Fan</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -35,7 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+        <a href="{{ url('/home') }}"><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 15vw">
     </div>
 
     <!-- /.login-logo -->
@@ -67,11 +67,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                    <div class="checkbox icheck">
+                    <!-- <div class="checkbox icheck">
                         <label>
                             <input type="checkbox" name="remember"> @lang('auth.remember_me')
                         </label>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
