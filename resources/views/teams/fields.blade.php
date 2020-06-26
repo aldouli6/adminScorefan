@@ -13,7 +13,13 @@
     {!! Form::label('logo_url', __('models/teams.fields.logo_url').':') !!}
     {!! Form::file('logo_url') !!}
     <br>
-    <img style="max-height:200px;" src="{{'/storage/'.$team->logo_url}}">
+    @if ($team ?? '' != null)
+        <img style="max-height:200px;" src="{{'/storage/'.$team->logo_url}}">
+    @else
+        No image
+    @endif
+    
+    
 </div>
 <div class="clearfix"></div>
 

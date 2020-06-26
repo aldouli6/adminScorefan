@@ -13,19 +13,28 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), array(
             
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ));
  
         if ($validator->fails()) {
-            return response($validator->messages());
+            $messages = $validator->messages();
+            $result='';
+            $cuenta=0;
+            foreach ($messages->all() as $message){
+                $result.=$message.',';
+                $cuenta++;
+            }
+            return response(['error'=>'1', 'message'=>$result , 'cuenta'=>$cuenta]);
         }else{
-            $user = User::create($request->all());
-            $accessToken = $user->createToken('authToken')->accessToken;
-            return response([ 'user' => $user, 'access_token' => $accessToken]);
+            $input = $request->all();
+            $input['password'] = Hash::make($input['password']);
+            $user = User::create($input);
+            $user->sendEmailVerificationNotification();
+            return response([ 'user' => $user]);
         }
         
     }
@@ -38,12 +47,21 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($loginData)) {
-            return response(['message' => 'Invalid Credentials']);
+            return response(['error'=>'1',
+            'message' => 'Credenciales Inválidas']);
+        } 
+        $user =auth()->user();
+        if($user->email_verified_at==''){
+            return response(['error'=>'2',
+            'message' => 'Usuario no verificado']);
         }
-
+        if($user->user_type!='user'){
+            return response(['error'=>'3',
+            'message' => 'Usuario sin permisos para esta aplicación']);
+        }
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
 
-        return response(['user' => auth()->user(), 'access_token' => $accessToken]);
+        return response(['error'=>'0','user' => $user, 'access_token' => $accessToken]);
 
     }
     public function logout()
