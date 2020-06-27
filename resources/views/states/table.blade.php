@@ -4,14 +4,16 @@
             <tr>
                 <th>@lang('models/states.fields.name')</th>
         <th>@lang('models/states.fields.enabled')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($states as $state)
             <tr>
+                <td>
+                    {!! Form::checkbox('enabled', 1, $state->enabled,  ['number'=>$state->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+                 </td>
                 <td>{{ $state->name }}</td>
-            <td>{{ $state->enabled }}</td>
                 <td>
                     {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

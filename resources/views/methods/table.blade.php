@@ -4,13 +4,15 @@
             <tr>
                 <th>@lang('models/methods.fields.enabled')</th>
         <th>@lang('models/methods.fields.name')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($methods as $method)
             <tr>
-                <td>{{ $method->enabled }}</td>
+            <td>
+                {!! Form::checkbox('enabled', 1, $method->enabled,  ['number'=>$method->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+            </td>
             <td>{{ $method->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['methods.destroy', $method->id], 'method' => 'delete']) !!}

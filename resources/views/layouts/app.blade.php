@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
 
     @yield('css')
 </head>
@@ -36,7 +39,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 7vw"></b>
+                <b><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 70%"></b>
             </a>
 
             <!-- Header Navbar -->
@@ -45,6 +48,7 @@
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
+                
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
@@ -163,7 +167,59 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+    var API_URL='http://127.0.0.1:8000';
+    $(document).ready( function () {
+        $('#{{Request::path()}}-table').DataTable();
+        $('.toggle input[type=checkbox]').change(function() {
+            var url='/updateEnabled';
+            $.ajax({ 
+                async: true,
+                url: API_URL+url,
+                type: "POST",
+                data: {
+                    id:$(this).attr('number'),
+                    table:"{{Request::path()}}",
+                    enabled: ($(this).prop('checked'))?1:0
+                },
+                success: function(data){
+                    if(data==1){
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Acutualizado correctamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }else{
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Hubo un error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                },
+                error: function (result) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Hubo un error',
+                        text:result['responseJSON']['message'],
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+            });
+            
+           
+        })
+    } );
 
+</script>
 @stack('scripts')
 </body>
 </html>

@@ -6,7 +6,7 @@
         <th>@lang('models/matches.fields.team_local_id')</th>
         <th>@lang('models/matches.fields.team_visitor_id')</th>
         <th>@lang('models/matches.fields.round_id')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>

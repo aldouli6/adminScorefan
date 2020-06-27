@@ -8,7 +8,7 @@
         <th>@lang('models/payments.fields.user_id')</th>
         <th>@lang('models/payments.fields.product_id')</th>
         <th>@lang('models/payments.fields.total')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>

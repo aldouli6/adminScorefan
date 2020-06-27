@@ -3,16 +3,18 @@
         <thead>
             <tr>
                 <th>@lang('models/teams.fields.enabled')</th>
-        <th>@lang('models/teams.fields.logo_url')</th>
-        <th>@lang('models/teams.fields.name')</th>
-        <th>@lang('models/teams.fields.league_id')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th>@lang('models/teams.fields.logo_url')</th>
+                <th>@lang('models/teams.fields.name')</th>
+                <th>@lang('models/teams.fields.league_id')</th>
+                <th >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($teams as $team)
             <tr>
-                <td>{{ $team->enabled }}</td>
+            <td>
+                {!! Form::checkbox('enabled', 1, $team->enabled,  ['number'=>$team->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+            </td>
             <td><img style="max-height:200px;" src="{{'/storage/'.$team->logo_url}}"></td>
             <td>{{ $team->name }}</td>
             <td>{{ $team->league_id }}</td>

@@ -5,13 +5,15 @@
                 <th>@lang('models/tournaments.fields.enabled')</th>
         <th>@lang('models/tournaments.fields.name')</th>
         <th>@lang('models/tournaments.fields.league_id')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($tournaments as $tournament)
             <tr>
-                <td>{{ $tournament->enabled }}</td>
+            <td>
+                {!! Form::checkbox('enabled', 1, $tournament->enabled,  ['number'=>$tournament->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+            </td>
             <td>{{ $tournament->name }}</td>
             <td>{{ $tournament->league_id }}</td>
                 <td>

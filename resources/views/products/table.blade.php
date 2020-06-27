@@ -7,13 +7,15 @@
         <th>@lang('models/products.fields.name')</th>
         <th>@lang('models/products.fields.img_url')</th>
         <th>@lang('models/products.fields.price')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($products as $product)
             <tr>
-                <td>{{ $product->enabled }}</td>
+            <td>
+                {!! Form::checkbox('enabled', 1, $product->enabled,  ['number'=>$product->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+            </td>
             <td>{{ $product->category_id }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->img_url }}</td>

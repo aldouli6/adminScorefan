@@ -13,4 +13,6 @@ return [
     'updated_at'   => 'Updated At',
     'deleted_at'   => 'Deleted At',
     'are_you_sure' => 'Are you sure?',
+    'yes' => 'Yes',
+    'no' => 'No',
 ];

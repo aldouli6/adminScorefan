@@ -5,7 +5,7 @@
                 <th>@lang('models/results.fields.match_id')</th>
         <th>@lang('models/results.fields.result_local')</th>
         <th>@lang('models/results.fields.result_visitor')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>

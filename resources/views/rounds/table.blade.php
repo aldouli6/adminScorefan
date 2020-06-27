@@ -7,13 +7,15 @@
         <th>@lang('models/rounds.fields.date_time_limit')</th>
         <th>@lang('models/rounds.fields.league_id')</th>
         <th>@lang('models/rounds.fields.tournament_id')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($rounds as $round)
             <tr>
-                <td>{{ $round->enabled }}</td>
+            <td>
+                {!! Form::checkbox('enabled', 1, $round->enabled,  ['number'=>$round->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+            </td>
             <td>{{ $round->name }}</td>
             <td>{{ $round->date_time_limit }}</td>
             <td>{{ $round->league_id }}</td>

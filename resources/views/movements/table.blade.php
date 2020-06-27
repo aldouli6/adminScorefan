@@ -5,7 +5,7 @@
                 <th>@lang('models/movements.fields.description')</th>
         <th>@lang('models/movements.fields.product_id')</th>
         <th>@lang('models/movements.fields.movement')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>

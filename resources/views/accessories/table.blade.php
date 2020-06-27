@@ -6,13 +6,15 @@
         <th>@lang('models/accessories.fields.user_id')</th>
         <th>@lang('models/accessories.fields.product_id')</th>
         <th>@lang('models/accessories.fields.selected')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($accessories as $accessory)
             <tr>
-                <td>{{ $accessory->enabled }}</td>
+            <td>
+                {!! Form::checkbox('enabled', 1, $accessory->enabled,  ['number'=>$accessory->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+            </td>
             <td>{{ $accessory->user_id }}</td>
             <td>{{ $accessory->product_id }}</td>
             <td>{{ $accessory->selected }}</td>

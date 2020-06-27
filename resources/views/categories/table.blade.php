@@ -4,13 +4,15 @@
             <tr>
                 <th>@lang('models/categories.fields.enabled')</th>
         <th>@lang('models/categories.fields.name')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($categories as $category)
             <tr>
-                <td>{{ $category->enabled }}</td>
+            <td>
+                {!! Form::checkbox('enabled', 1, $category->enabled,  ['number'=>$category->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
+            </td>
             <td>{{ $category->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}

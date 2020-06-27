@@ -8,7 +8,7 @@
         <th>@lang('models/predictions.fields.prediction_local')</th>
         <th>@lang('models/predictions.fields.prediction_visitor')</th>
         <th>@lang('models/predictions.fields.points')</th>
-                <th colspan="3">@lang('crud.action')</th>
+                <th  >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>

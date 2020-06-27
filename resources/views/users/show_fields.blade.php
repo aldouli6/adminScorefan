@@ -1,22 +1,22 @@
 <!-- Name Field -->
 <div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name',  __('models/users.fields.name').':') !!}
     <p>{!! $user->name !!}</p>
 </div>
 
 <!-- Email Field -->
 <div class="form-group">
-    {!! Form::label('email', 'Email:') !!}
+    {!! Form::label('email',  __('models/users.fields.email').':') !!}
     <p>{!! $user->email !!}</p>
 </div>
 
 <!-- team Id Field -->
 <div class="form-group">
-    {!! Form::label('team_id', 'Equipo') !!}
+    {!! Form::label('team_id',  __('models/users.fields.team').':') !!}
     <p>{{ $user->team_id }}</p>
 </div>
 
 <div class="form-group">
-    {!! Form::label('user_type', 'Type User') !!}
+    {!! Form::label('user_type',  __('models/users.fields.user_type').':') !!}
     <p>{{ $user->user_type }}</p>
 </div>
