@@ -15,9 +15,9 @@
             <td>
                 {!! Form::checkbox('enabled', 1, $accessory->enabled,  ['number'=>$accessory->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
             </td>
-            <td>{{ $accessory->user_id }}</td>
-            <td>{{ $accessory->product_id }}</td>
-            <td>{{ $accessory->selected }}</td>
+            <td>{{ $userItems[$accessory->user_id ]  ?? 'Disabled'}}</td>
+            <td>{{ $productItems[$accessory->product_id ]  ?? 'Disabled'}}</td>
+            <td>@if ($accessory->selected==1) @lang('crud.yes') @else @lang('crud.no') @endif</td>
                 <td>
                     {!! Form::open(['route' => ['accessories.destroy', $accessory->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

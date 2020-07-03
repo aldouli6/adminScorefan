@@ -1,7 +1,7 @@
 <!-- Enabled Field -->
 <div class="form-group">
     {!! Form::label('enabled', __('models/rounds.fields.enabled').':') !!}
-    <p>{{ $round->enabled }}</p>
+    <p>@if ($round->enabled==1) @lang('crud.yes') @else @lang('crud.no') @endif </p>
 </div>
 
 <!-- Name Field -->
@@ -19,13 +19,13 @@
 <!-- League Id Field -->
 <div class="form-group">
     {!! Form::label('league_id', __('models/rounds.fields.league_id').':') !!}
-    <p>{{ $round->league_id }}</p>
+    <p>{{ $leagueItems[$round->league_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Tournament Id Field -->
 <div class="form-group">
     {!! Form::label('tournament_id', __('models/rounds.fields.tournament_id').':') !!}
-    <p>{{ $round->tournament_id }}</p>
+    <p>{{  $tournamentItems[$round->tournament_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Created At Field -->

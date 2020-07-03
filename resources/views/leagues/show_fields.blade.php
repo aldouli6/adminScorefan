@@ -1,7 +1,7 @@
 <!-- Enabled Field -->
 <div class="form-group">
     {!! Form::label('enabled', __('models/leagues.fields.enabled').':') !!}
-    <p>{{ $league->enabled }}</p>
+    <p>@if ($league->enabled==1) @lang('crud.yes') @else @lang('crud.no') @endif</p>
 </div>
 
 <!-- Name Field -->

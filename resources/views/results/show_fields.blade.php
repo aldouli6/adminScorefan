@@ -1,7 +1,7 @@
 <!-- Match Id Field -->
 <div class="form-group">
     {!! Form::label('match_id', __('models/results.fields.match_id').':') !!}
-    <p>{{ $result->match_id }}</p>
+    <p>{{ $matchItems[$result->match_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Result Local Field -->

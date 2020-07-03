@@ -7,7 +7,13 @@
 <!-- Product Id Field -->
 <div class="form-group">
     {!! Form::label('product_id', __('models/movements.fields.product_id').':') !!}
-    <p>{{ $movement->product_id }}</p>
+    <p>{{ $productItems[$movement->product_id ] ?? 'Disabled' }}</p>
+</div>
+
+<!-- User Id Field -->
+<div class="form-group">
+    {!! Form::label('user_id', __('models/movements.fields.user_id').':') !!}
+    <p>{{ $userItems[$movement->user_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Movement Field -->

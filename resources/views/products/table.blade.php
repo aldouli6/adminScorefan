@@ -16,9 +16,9 @@
             <td>
                 {!! Form::checkbox('enabled', 1, $product->enabled,  ['number'=>$product->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
             </td>
-            <td>{{ $product->category_id }}</td>
+            <td>{{ $categoryItems[$product->category_id] ?? 'Disabled' }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->img_url }}</td>
+            <td><img style="max-height:50px;" src="{{'/storage/'.$product->img_url}}"></td>
             <td>{{ $product->price }}</td>
                 <td>
                     {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}

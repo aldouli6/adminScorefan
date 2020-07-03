@@ -10,6 +10,12 @@
     {!! Form::select('product_id', $productItems, null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- User Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::select('user_id', $userItems, null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Movement Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('movement', __('models/movements.fields.movement').':') !!}

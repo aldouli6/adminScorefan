@@ -12,6 +12,7 @@
 
 <!-- Match Id Field -->
 <div class="form-group col-sm-6">
+
     {!! Form::label('match_id', 'Match Id:') !!}
     {!! Form::select('match_id', $matchItems, null, ['class' => 'form-control']) !!}
 </div>

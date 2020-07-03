@@ -11,7 +11,7 @@
 <!-- Logo Url Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('logo_url', __('models/teams.fields.logo_url').':') !!}
-    {!! Form::file('logo_url') !!}
+    {!! Form::file('logo_url', ['accept'=>'image/png']) !!}
     <br>
     @if ($team ?? '' != null)
         <img style="max-height:200px;" src="{{'/storage/'.$team->logo_url}}">

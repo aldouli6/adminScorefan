@@ -30,92 +30,21 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 Route::resource('users', 'UserController')->middleware('auth');
-Route::post('/updateEnabled', 'AjaxController@updateEnabled');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::resource('states', 'StateController');
-
-Route::resource('teams', 'TeamController');
-
-Route::resource('matches', 'MatchController');
-
-
-
-
-
-
-
-Route::resource('methods', 'MethodController');
-
-Route::resource('categories', 'CategoryController');
-
-
-
-Route::resource('products', 'ProductController');
-
-
-
-
-
-Route::resource('payments', 'PaymentController');
-
-
-
-
-
-Route::resource('predictions', 'PredictionController');
-
-Route::resource('accessories', 'AccessoryController');
-
-
-
-
-
-Route::resource('results', 'ResultController');
-
-Route::resource('movements', 'MovementController');
-
-Route::resource('rounds', 'RoundController');
-
-Route::resource('leagues', 'LeagueController');
-
-Route::resource('tournaments', 'TournamentController');
+Route::middleware(['auth'])->group(function(){
+    Route::resource('states', 'StateController');
+    Route::post('/updateEnabled', 'AjaxController@updateEnabled');
+    Route::resource('teams', 'TeamController');
+    Route::resource('matches', 'MatchController');
+    Route::resource('products', 'ProductController');
+    Route::resource('payments', 'PaymentController');
+    Route::resource('predictions', 'PredictionController');
+    Route::resource('accessories', 'AccessoryController');
+    Route::resource('results', 'ResultController');
+    Route::resource('movements', 'MovementController');
+    Route::resource('rounds', 'RoundController');
+    Route::resource('leagues', 'LeagueController');
+    Route::resource('tournaments', 'TournamentController');
+    Route::resource('methods', 'MethodController');
+    Route::resource('categories', 'CategoryController');
+});

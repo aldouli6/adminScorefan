@@ -12,10 +12,10 @@
         <tbody>
         @foreach($matches as $match)
             <tr>
-                <td>{{ $match->state_id }}</td>
-            <td>{{ $match->team_local_id }}</td>
-            <td>{{ $match->team_visitor_id }}</td>
-            <td>{{ $match->round_id }}</td>
+            <td> {{ $stateItems[$match->state_id] ?? 'Disabled' }}</td>
+            <td> {{ $teamItems[$match->team_local_id] ?? 'Disabled' }}</td>
+            <td> {{ $teamItems[$match->team_visitor_id] ?? 'Disabled' }}</td>
+            <td> {{ $roundItems[$match->round_id] ?? 'Disabled' }}</td>
                 <td>
                     {!! Form::open(['route' => ['matches.destroy', $match->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

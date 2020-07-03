@@ -189,7 +189,7 @@
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'Acutualizado correctamente',
+                            title: 'Actualizado correctamente',
                             showConfirmButton: false,
                             timer: 1500
                         })

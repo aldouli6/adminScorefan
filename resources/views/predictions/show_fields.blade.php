@@ -1,19 +1,19 @@
 <!-- State Id Field -->
 <div class="form-group">
     {!! Form::label('state_id', __('models/predictions.fields.state_id').':') !!}
-    <p>{{ $prediction->state_id }}</p>
+    <p>{{ $stateItems[$prediction->state_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- User Id Field -->
 <div class="form-group">
     {!! Form::label('user_id', __('models/predictions.fields.user_id').':') !!}
-    <p>{{ $prediction->user_id }}</p>
+    <p>{{ $userItems[$prediction->user_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Match Id Field -->
 <div class="form-group">
     {!! Form::label('match_id', __('models/predictions.fields.match_id').':') !!}
-    <p>{{ $prediction->match_id }}</p>
+    <p>{{ $matchItems[$prediction->match_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Prediction Local Field -->

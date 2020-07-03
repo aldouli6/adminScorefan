@@ -14,8 +14,8 @@
             <td>
                 {!! Form::checkbox('enabled', 1, $tournament->enabled,  ['number'=>$tournament->id,'data-toggle' => 'toggle','data-on'=>__('crud.yes'),'data-off'=>__('crud.no'), 'data-size'=>'mini','data-onstyle'=>'success', 'data-offstyle'=>'danger']) !!}
             </td>
-            <td>{{ $tournament->name }}</td>
-            <td>{{ $tournament->league_id }}</td>
+            <td> {{ $tournament->name }} </td>
+            <td>{{ $leagueItems[$tournament->league_id] ?? 'Disabled' }}</td>
                 <td>
                     {!! Form::open(['route' => ['tournaments.destroy', $tournament->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

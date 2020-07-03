@@ -2,9 +2,9 @@
     <table class="table" id="payments-table">
         <thead>
             <tr>
+        <th>@lang('models/payments.fields.state_id')</th>
                 <th>@lang('models/payments.fields.description')</th>
         <th>@lang('models/payments.fields.method_id')</th>
-        <th>@lang('models/payments.fields.state_id')</th>
         <th>@lang('models/payments.fields.user_id')</th>
         <th>@lang('models/payments.fields.product_id')</th>
         <th>@lang('models/payments.fields.total')</th>
@@ -14,11 +14,11 @@
         <tbody>
         @foreach($payments as $payment)
             <tr>
-                <td>{{ $payment->description }}</td>
-            <td>{{ $payment->method_id }}</td>
-            <td>{{ $payment->state_id }}</td>
-            <td>{{ $payment->user_id }}</td>
-            <td>{{ $payment->product_id }}</td>
+            <td>{{ $stateItems[$payment->state_id]  ?? 'Disabled' }}</td>
+            <td>{{ $payment->description }}</td>
+            <td>{{ $methodItems[$payment->method_id]  ?? 'Disabled' }}</td>
+            <td>{{ $userItems[$payment->user_id ]  ?? 'Disabled'}}</td>
+            <td>{{ $productItems[$payment->product_id ]  ?? 'Disabled'}}</td>
             <td>{{ $payment->total }}</td>
                 <td>
                     {!! Form::open(['route' => ['payments.destroy', $payment->id], 'method' => 'delete']) !!}

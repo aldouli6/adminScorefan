@@ -23,7 +23,13 @@
 <!-- Img Url Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('img_url', __('models/products.fields.img_url').':') !!}
-    {!! Form::file('img_url') !!}
+    {!! Form::file('img_url', ['accept'=>'image/svg']) !!}
+    <br>
+    @if ($product ?? '' != null)
+        <img style="max-height:200px;" src="{{'/storage/'.$product->img_url}}">
+    @else
+        No image
+    @endif
 </div>
 <div class="clearfix"></div>
 

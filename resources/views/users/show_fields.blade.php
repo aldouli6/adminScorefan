@@ -13,7 +13,7 @@
 <!-- team Id Field -->
 <div class="form-group">
     {!! Form::label('team_id',  __('models/users.fields.team').':') !!}
-    <p>{{ $user->team_id }}</p>
+    <p>{{ $leagueItems[$user->league_id] ?? 'Disabled' }}</p>
 </div>
 
 <div class="form-group">

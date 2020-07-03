@@ -25,7 +25,7 @@
 <!-- Date Time Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date_time', __('models/matches.fields.date_time').':') !!}
-    {!! Form::date('date_time', null, ['class' => 'form-control','id'=>'date_time']) !!}
+    {!! Form::text('date_time', null, ['class' => 'form-control','id'=>'date_time']) !!}
 </div>
 
 @push('scripts')

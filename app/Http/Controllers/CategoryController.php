@@ -55,9 +55,16 @@ class CategoryController extends AppBaseController
     public function store(CreateCategoryRequest $request)
     {
         $input = $request->all();
-
+        $file=$request->file('img_url');
         $category = $this->categoryRepository->create($input);
-
+        if($file!=null){
+            $formato=($file->getClientOriginalExtension()!='')?$file->getClientOriginalExtension():$request->formato;
+            $nombre='category_'.$category->id.'.'.$formato;
+            $save_path = storage_path().'/app/public/categories';
+            $file->move($save_path, $nombre);
+            $input['img_url']='categories/'.$nombre;
+            $category = $this->categoryRepository->update($input, $category->id);    
+        }
         Flash::success(__('messages.saved', ['model' => __('models/categories.singular')]));
 
         return redirect(route('categories.index'));
@@ -114,14 +121,23 @@ class CategoryController extends AppBaseController
     public function update($id, UpdateCategoryRequest $request)
     {
         $category = $this->categoryRepository->find($id);
+        $file=$request->file('img_url');
 
         if (empty($category)) {
             Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
-
-        $category = $this->categoryRepository->update($request->all(), $id);
+        $input = $request->all();
+        if($file!=null){
+            $formato=($file->getClientOriginalExtension()!='')?$file->getClientOriginalExtension():$request->formato;
+            $nombre='category_'.$category->id.'.'.$formato;
+            $save_path = storage_path().'/app/public/categories';
+            $file->move($save_path, $nombre);
+            $input['img_url']='categories/'.$nombre;
+           
+        }
+        $category = $this->categoryRepository->update($input, $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/categories.singular')]));
 

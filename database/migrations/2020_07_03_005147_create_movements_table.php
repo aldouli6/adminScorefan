@@ -18,10 +18,12 @@ class CreateMovementsTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->integer('product_id')->unsigned();
+            $table->biginteger('user_id')->unsigned();
             $table->double('movement');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

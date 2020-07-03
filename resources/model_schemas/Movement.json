@@ -36,6 +36,18 @@
         "inView": true
     },
     {
+        "name": "user_id",
+        "dbType": "biginteger:unsigned:foreign,users,id",
+        "htmlType": "selectTable:users:name,id",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
         "name": "movement",
         "dbType": "double",
         "htmlType": "number",

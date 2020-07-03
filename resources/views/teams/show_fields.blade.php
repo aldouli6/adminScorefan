@@ -1,7 +1,7 @@
 <!-- Enabled Field -->
 <div class="form-group">
     {!! Form::label('enabled', __('models/teams.fields.enabled').':') !!}
-    <p>{{ $team->enabled }}</p>
+    <p>@if ($team->enabled==1) @lang('crud.yes') @else @lang('crud.no') @endif </p>
 </div>
 
 <!-- Logo Url Field -->
@@ -19,7 +19,7 @@
 <!-- League Id Field -->
 <div class="form-group">
     {!! Form::label('league_id', __('models/teams.fields.league_id').':') !!}
-    <p>{{ $team->league_id }}</p>
+    <p>{{ $leagueItems[$team->league_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Created At Field -->

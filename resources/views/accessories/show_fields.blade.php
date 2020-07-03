@@ -1,25 +1,25 @@
 <!-- Enabled Field -->
 <div class="form-group">
     {!! Form::label('enabled', __('models/accessories.fields.enabled').':') !!}
-    <p>{{ $accessory->enabled }}</p>
+    <p>@if ($accessory->enabled==1) @lang('crud.yes') @else @lang('crud.no') @endif</p>
 </div>
 
 <!-- User Id Field -->
 <div class="form-group">
     {!! Form::label('user_id', __('models/accessories.fields.user_id').':') !!}
-    <p>{{ $accessory->user_id }}</p>
+    <p>{{ $userItems[$accessory->user_id ]  ?? 'Disabled'}}</p>
 </div>
 
 <!-- Product Id Field -->
 <div class="form-group">
     {!! Form::label('product_id', __('models/accessories.fields.product_id').':') !!}
-    <p>{{ $accessory->product_id }}</p>
+    <p>{{ $productItems[$accessory->product_id ]  ?? 'Disabled'}}</p>
 </div>
 
 <!-- Selected Field -->
 <div class="form-group">
     {!! Form::label('selected', __('models/accessories.fields.selected').':') !!}
-    <p>{{ $accessory->selected }}</p>
+    <p>@if ($accessory->selected==1) @lang('crud.yes') @else @lang('crud.no') @endif</p>
 </div>
 
 <!-- Created At Field -->

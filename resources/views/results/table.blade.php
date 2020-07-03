@@ -11,7 +11,7 @@
         <tbody>
         @foreach($results as $result)
             <tr>
-                <td>{{ $result->match_id }}</td>
+            <td>{{ $matchItems[$result->match_id] ?? 'Disabled' }}</td>
             <td>{{ $result->result_local }}</td>
             <td>{{ $result->result_visitor }}</td>
                 <td>

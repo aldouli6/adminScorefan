@@ -2,8 +2,8 @@
     <table class="table" id="states-table">
         <thead>
             <tr>
-                <th>@lang('models/states.fields.name')</th>
         <th>@lang('models/states.fields.enabled')</th>
+                <th>@lang('models/states.fields.name')</th>
                 <th  >@lang('crud.action')</th>
             </tr>
         </thead>

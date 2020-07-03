@@ -1,3 +1,10 @@
+
+<!-- State Id Field -->
+<div class="form-group">
+    {!! Form::label('state_id', __('models/payments.fields.state_id').':') !!}
+    <p>{{ $stateItems[$payment->state_id]  ?? 'Disabled' }}</p>
+</div>
+
 <!-- Description Field -->
 <div class="form-group">
     {!! Form::label('description', __('models/payments.fields.description').':') !!}
@@ -7,25 +14,19 @@
 <!-- Method Id Field -->
 <div class="form-group">
     {!! Form::label('method_id', __('models/payments.fields.method_id').':') !!}
-    <p>{{ $payment->method_id }}</p>
-</div>
-
-<!-- State Id Field -->
-<div class="form-group">
-    {!! Form::label('state_id', __('models/payments.fields.state_id').':') !!}
-    <p>{{ $payment->state_id }}</p>
+    <p>{{ $methodItems[$payment->method_id]  ?? 'Disabled' }}</p>
 </div>
 
 <!-- User Id Field -->
 <div class="form-group">
     {!! Form::label('user_id', __('models/payments.fields.user_id').':') !!}
-    <p>{{ $payment->user_id }}</p>
+    <p>{{ $userItems[$payment->user_id ]  ?? 'Disabled'}}</p>
 </div>
 
 <!-- Product Id Field -->
 <div class="form-group">
     {!! Form::label('product_id', __('models/payments.fields.product_id').':') !!}
-    <p>{{ $payment->product_id }}</p>
+    <p>{{ $productItems[$payment->product_id ]  ?? 'Disabled'}}</p>
 </div>
 
 <!-- Total Field -->

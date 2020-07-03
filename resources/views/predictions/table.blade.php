@@ -14,9 +14,9 @@
         <tbody>
         @foreach($predictions as $prediction)
             <tr>
-                <td>{{ $prediction->state_id }}</td>
-            <td>{{ $prediction->user_id }}</td>
-            <td>{{ $prediction->match_id }}</td>
+            <td>{{ $stateItems[$prediction->state_id] ?? 'Disabled' }}</td>
+            <td>{{ $userItems[$prediction->user_id] ?? 'Disabled' }}</td>
+            <td>{{ $matchItems[$prediction->match_id] ?? 'Disabled' }}</td>
             <td>{{ $prediction->prediction_local }}</td>
             <td>{{ $prediction->prediction_visitor }}</td>
             <td>{{ $prediction->points }}</td>

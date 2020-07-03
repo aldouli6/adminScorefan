@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class MovementRepository
  * @package App\Repositories
- * @version June 16, 2020, 12:03 am UTC
+ * @version July 3, 2020, 12:51 am UTC
 */
 
 class MovementRepository extends BaseRepository
@@ -19,6 +19,7 @@ class MovementRepository extends BaseRepository
     protected $fieldSearchable = [
         'description',
         'product_id',
+        'user_id',
         'movement'
     ];
 

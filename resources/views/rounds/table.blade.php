@@ -18,8 +18,8 @@
             </td>
             <td>{{ $round->name }}</td>
             <td>{{ $round->date_time_limit }}</td>
-            <td>{{ $round->league_id }}</td>
-            <td>{{ $round->tournament_id }}</td>
+            <td> {{ $leagueItems[$round->league_id] ?? 'Disabled' }}</td>
+            <td> {{  $tournamentItems[$round->tournament_id] ?? 'Disabled' }}</td>
                 <td>
                     {!! Form::open(['route' => ['rounds.destroy', $round->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Movement
  * @package App\Models
- * @version June 16, 2020, 12:03 am UTC
+ * @version July 3, 2020, 12:51 am UTC
  *
  * @property string $description
  * @property integer $product_id
+ * @property integer $user_id
  * @property number $movement
  */
 class Movement extends Model
@@ -28,6 +29,7 @@ class Movement extends Model
     public $fillable = [
         'description',
         'product_id',
+        'user_id',
         'movement'
     ];
 
@@ -40,6 +42,7 @@ class Movement extends Model
         'id' => 'integer',
         'description' => 'string',
         'product_id' => 'integer',
+        'user_id' => 'integer',
         'movement' => 'double'
     ];
 
@@ -51,6 +54,7 @@ class Movement extends Model
     public static $rules = [
         'description' => 'required',
         'product_id' => 'required',
+        'user_id' => 'required',
         'movement' => 'required'
     ];
 

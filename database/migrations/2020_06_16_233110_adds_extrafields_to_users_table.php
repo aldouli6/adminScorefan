@@ -18,7 +18,7 @@ class AddsExtrafieldsToUsersTable extends Migration
             $table->string('api_token', 60)->unique()->nullable();
             $table->enum('user_type', ['user', 'admin'])->nullable();;
             $table->boolean('enabled')->default(true);
-            $table->string('token_facebook')->nullable();;
+            $table->string('token_facebook')->nullable();
             $table->boolean('terms')->default(true);
             $table->boolean('privacy_notice')->default(true);
             $table->double('balance')->nullable();;

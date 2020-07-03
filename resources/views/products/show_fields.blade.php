@@ -1,13 +1,13 @@
 <!-- Enabled Field -->
 <div class="form-group">
     {!! Form::label('enabled', __('models/products.fields.enabled').':') !!}
-    <p>{{ $product->enabled }}</p>
+    <p>@if ($product->enabled==1) @lang('crud.yes') @else @lang('crud.no') @endif</p>
 </div>
 
 <!-- Category Id Field -->
 <div class="form-group">
     {!! Form::label('category_id', __('models/products.fields.category_id').':') !!}
-    <p>{{ $product->category_id }}</p>
+    <p>{{ $categoryItems[$product->category_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Name Field -->
@@ -19,7 +19,7 @@
 <!-- Img Url Field -->
 <div class="form-group">
     {!! Form::label('img_url', __('models/products.fields.img_url').':') !!}
-    <p>{{ $product->img_url }}</p>
+    <p><img style="max-height:50px;" src="{{'/storage/'.$product->img_url}}"></p>
 </div>
 
 <!-- Price Field -->

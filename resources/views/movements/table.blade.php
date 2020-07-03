@@ -4,15 +4,17 @@
             <tr>
                 <th>@lang('models/movements.fields.description')</th>
         <th>@lang('models/movements.fields.product_id')</th>
+        <th>@lang('models/movements.fields.user_id')</th>
         <th>@lang('models/movements.fields.movement')</th>
-                <th  >@lang('crud.action')</th>
+                <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
         @foreach($movements as $movement)
             <tr>
                 <td>{{ $movement->description }}</td>
-            <td>{{ $movement->product_id }}</td>
+            <td>{{ $productItems[$movement->product_id ] ?? 'Disabled'}}</td>
+            <td>{{ $userItems[$movement->user_id] ?? 'Disabled' }}</td>
             <td>{{ $movement->movement }}</td>
                 <td>
                     {!! Form::open(['route' => ['movements.destroy', $movement->id], 'method' => 'delete']) !!}

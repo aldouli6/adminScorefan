@@ -7,7 +7,7 @@
 <!-- Enabled Field -->
 <div class="form-group">
     {!! Form::label('enabled', __('models/states.fields.enabled').':') !!}
-    <p>{{ $state->enabled }}</p>
+    <p>@if ($state->enabled==1) @lang('crud.yes') @else @lang('crud.no') @endif </p>
 </div>
 
 <!-- Created At Field -->

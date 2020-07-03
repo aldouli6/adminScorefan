@@ -55,9 +55,16 @@ class ProductController extends AppBaseController
     public function store(CreateProductRequest $request)
     {
         $input = $request->all();
-
+        $file=$request->file('img_url');
         $product = $this->productRepository->create($input);
-
+        if($file!=null){
+            $formato=($file->getClientOriginalExtension()!='')?$file->getClientOriginalExtension():$request->formato;
+            $nombre='product_'.$product->id.'.'.$formato;
+            $save_path = storage_path().'/app/public/products';
+            $file->move($save_path, $nombre);
+            $input['img_url']='products/'.$nombre;
+            $product = $this->productRepository->update($input, $product->id);    
+        }
         Flash::success(__('messages.saved', ['model' => __('models/products.singular')]));
 
         return redirect(route('products.index'));
@@ -114,14 +121,22 @@ class ProductController extends AppBaseController
     public function update($id, UpdateProductRequest $request)
     {
         $product = $this->productRepository->find($id);
-
+        $file=$request->file('img_url');
         if (empty($product)) {
             Flash::error(__('messages.not_found', ['model' => __('models/products.singular')]));
 
             return redirect(route('products.index'));
         }
-
-        $product = $this->productRepository->update($request->all(), $id);
+        $input = $request->all();
+        if($file!=null){
+            $formato=($file->getClientOriginalExtension()!='')?$file->getClientOriginalExtension():$request->formato;
+            $nombre='product_'.$product->id.'.'.$formato;
+            $save_path = storage_path().'/app/public/products';
+            $file->move($save_path, $nombre);
+            $input['img_url']='products/'.$nombre;
+           
+        }
+        $product = $this->productRepository->update($input, $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/products.singular')]));
 

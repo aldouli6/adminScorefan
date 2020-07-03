@@ -1,25 +1,25 @@
 <!-- State Id Field -->
 <div class="form-group">
     {!! Form::label('state_id', __('models/matches.fields.state_id').':') !!}
-    <p>{{ $match->state_id }}</p>
+    <p>{{ $stateItems[$match->state_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Team Local Id Field -->
 <div class="form-group">
     {!! Form::label('team_local_id', __('models/matches.fields.team_local_id').':') !!}
-    <p>{{ $match->team_local_id }}</p>
+    <p>{{ $teamItems[$match->team_local_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Team Visitor Id Field -->
 <div class="form-group">
     {!! Form::label('team_visitor_id', __('models/matches.fields.team_visitor_id').':') !!}
-    <p>{{ $match->team_visitor_id }}</p>
+    <p>{{ $teamItems[$match->team_visitor_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Round Id Field -->
 <div class="form-group">
     {!! Form::label('round_id', __('models/matches.fields.round_id').':') !!}
-    <p>{{ $match->round_id }}</p>
+    <p>{{ $roundItems[$match->roun_id] ?? 'Disabled' }}</p>
 </div>
 
 <!-- Date Time Field -->
