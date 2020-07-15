@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateRoundAPIRequest;
 use App\Http\Requests\API\UpdateRoundAPIRequest;
 use App\Models\Round;
+use App\Models\League;
+use App\Models\Tournament;
 use App\Repositories\RoundRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -35,7 +37,7 @@ class RoundAPIController extends AppBaseController
     public function index(Request $request)
     {
         $rounds = $this->roundRepository->all(
-            $request->except(['skip', 'limit']),
+            ['enabled'=>'1'],
             $request->get('skip'),
             $request->get('limit')
         );
@@ -45,7 +47,34 @@ class RoundAPIController extends AppBaseController
             __('messages.retrieved', ['model' => __('models/rounds.plural')])
         );
     }
-
+    public function actualRound(Request $request)
+    {
+        $ahora = date("Y-m-d H:i:s");   
+        $round = Round::where('date_time_limit','>',$ahora)
+                ->where('enabled', '1')
+                ->orderBy('date_time_limit')
+                ->firstOrfail();
+        $league =  League::where('id',$round->league_id)
+                ->where('enabled', '1')->firstOrfail();
+        $torunament =  Tournament::where('id',$round->tournament_id)
+                ->where('enabled', '1')
+                ->firstOrfail();
+        $dateTime = strtotime($round->date_time_limit);
+        $date = date('l d F h:i', $dateTime);
+        $response = array("round_id"=>$round->id,
+                        "round_name"=>$round->name,
+                        "date_time_limit"=>$date,
+                        "tournament_name"=>$torunament->name,
+                        "tournament_id"=>$torunament->id,
+                        "league_name"=>$league->name,
+                        "league_id"=>$league->id    
+        );
+        
+        return $this->sendResponse(
+            $response,
+            __('messages.retrieved', ['model' => __('models/rounds.plural')])
+        );
+    }
     /**
      * Store a newly created Round in storage.
      * POST /rounds

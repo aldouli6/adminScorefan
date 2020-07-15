@@ -35,7 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 15vw">
+        <a href="{{ url('/home') }}"><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 15vw"></a>
     </div>
 
     <!-- /.login-logo -->

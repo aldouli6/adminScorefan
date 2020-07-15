@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreatePredictionAPIRequest;
 use App\Http\Requests\API\UpdatePredictionAPIRequest;
 use App\Models\Prediction;
+use App\Models\Match;
 use App\Repositories\PredictionRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -39,13 +40,34 @@ class PredictionAPIController extends AppBaseController
             $request->get('skip'),
             $request->get('limit')
         );
-
         return $this->sendResponse(
             $predictions->toArray(),
             __('messages.retrieved', ['model' => __('models/predictions.plural')])
         );
     }
-
+    public function roundPredictions(Request $request)
+    {
+        $matches = Match::where('round_id',$request->round_id)
+            ->where('state_id','2')
+            ->orderBy('date_time', 'asc')
+            ->get();
+        $predictions=array();
+        
+        foreach ($matches as $key => $match) {
+            $prediction = Prediction::where('match_id',$match->id)
+                            ->where('state_id','2')
+                            ->where('user_id',$request->user_id)
+                            ->first();
+            if($prediction){
+                $predictions[$match->id]=array("local"=>(string)$prediction->prediction_local , 
+                                            "visitante"=>(string)$prediction->prediction_visitor);
+            }  
+        }
+        return $this->sendResponse(
+            $predictions,
+            __('messages.retrieved', ['model' => __('models/predictions.plural')])
+        );
+    }
     /**
      * Store a newly created Prediction in storage.
      * POST /predictions
@@ -56,9 +78,11 @@ class PredictionAPIController extends AppBaseController
      */
     public function store(CreatePredictionAPIRequest $request)
     {
-        $input = $request->all();
-
-        $prediction = $this->predictionRepository->create($input);
+        $prediction = Prediction::updateOrCreate(
+            ['user_id' =>$request->user_id, 'match_id' => $request->match_id],
+            ['state_id' => 2,'points'=>$request->points,'prediction_visitor'=>$request->prediction_visitor, 'prediction_local'=>$request->prediction_local]
+        );
+        // $prediction = $this->predictionRepository->create($input);
 
         return $this->sendResponse(
             $prediction->toArray(),

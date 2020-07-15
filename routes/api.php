@@ -23,19 +23,22 @@ Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 Route::get('/teams', 'API\TeamAPIController@index');
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::group(['middleware' => 'auth:api'], function() {
+// Route::group(['middleware' => 'auth:api'], function() {
     Route::resource('states', 'API\StateAPIController');
     // Route::resource('teams', 'API\TeamAPIController');
     Route::resource('rounds', 'API\RoundAPIController');
+    Route::get('/actualRound', 'API\RoundAPIController@actualRound');
     Route::resource('leagues', 'API\LeagueAPIController');
     Route::resource('tournaments', 'API\TournamentAPIController');
     Route::resource('accessories', 'API\AccessoryAPIController');
     Route::resource('categories', 'API\CategoryAPIController');
     Route::resource('matches', 'API\MatchAPIController');
+    Route::get('/roundMatches/{round_id}', 'API\MatchAPIController@roundMatches');
     Route::resource('results', 'API\ResultAPIController');
     Route::resource('methods', 'API\MethodAPIController');
     Route::resource('movements', 'API\MovementAPIController');
     Route::resource('payments', 'API\PaymentAPIController');
     Route::resource('products', 'API\ProductAPIController');
     Route::resource('predictions', 'API\PredictionAPIController');
-});
+    Route::get('/roundPredictions/{round_id}/{user_id}', 'API\PredictionAPIController@roundPredictions');
+// });

@@ -45,6 +45,17 @@ class MatchAPIController extends AppBaseController
             __('messages.retrieved', ['model' => __('models/matches.plural')])
         );
     }
+    public function roundMatches(Request $request)
+    {
+        $matches = Match::where('round_id',$request->round_id)
+                    ->where('state_id','2')
+                    ->orderBy('date_time', 'asc')
+                    ->get();
+        return $this->sendResponse(
+            $matches->toArray(),
+            __('messages.retrieved', ['model' => __('models/matches.plural')])
+        );
+    }
 
     /**
      * Store a newly created Match in storage.

@@ -35,11 +35,10 @@ class TeamAPIController extends AppBaseController
     public function index(Request $request)
     {
         $teams = $this->teamRepository->all(
-            $request->except(['skip', 'limit']),
+            ['enabled'=>'1'],
             $request->get('skip'),
             $request->get('limit')
         );
-
         return $this->sendResponse(
             $teams->toArray(),
             __('messages.retrieved', ['model' => __('models/teams.plural')])
