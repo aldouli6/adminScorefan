@@ -5,6 +5,11 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreatePaymentAPIRequest;
 use App\Http\Requests\API\UpdatePaymentAPIRequest;
 use App\Models\Payment;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Accessory;
+use App\User;
+use App\Models\Movement;
 use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -66,6 +71,44 @@ class PaymentAPIController extends AppBaseController
         );
     }
 
+    public function guardarCompra(Request $request)
+    {
+        $product = Product::find($request->product_id);
+        $category = Category::find($product->category_id);
+        if($category->affect_balance){
+            $movement = new Movement;
+            $movement->description = 'Compra de '.$product->name;
+            $movement->user_id = $request->user_id;
+            $movement->product_id = $request->product_id;
+            $movement->movement =$product->price;
+            $movement->save();
+            if($movement){
+                $user = User::find($request->user_id);
+                $user->balance = floatval($user->balance) + floatval($product->price);
+                $user->save();
+            }
+        }else{
+            $accesory = new Accessory;
+            $accesory->enabled = true;
+            $accesory->user_id = $request->user_id;
+            $accesory->product_id = $request->product_id;
+            $accesory->selected = false;
+            $accesory->save();
+            if($accesory){
+                $movement = new Movement;
+                $movement->description = 'Compra de '.$product->name;
+                $movement->user_id = $request->user_id;
+                $movement->product_id = $request->product_id;
+                $movement->movement =0;
+                $movement->save();
+            }
+        }
+
+        return $this->sendResponse(
+            $user->toArray(),
+            __('messages.saved', ['model' => __('models/payments.singular')])
+        );
+    }
     /**
      * Display the specified Payment.
      * GET|HEAD /payments/{id}

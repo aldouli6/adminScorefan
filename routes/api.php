@@ -38,6 +38,7 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
     Route::resource('methods', 'API\MethodAPIController');
     Route::resource('movements', 'API\MovementAPIController');
     Route::resource('payments', 'API\PaymentAPIController');
+    Route::post('/guardarCompra', 'API\PaymentAPIController@guardarCompra');
     Route::resource('products', 'API\ProductAPIController');
     Route::resource('predictions', 'API\PredictionAPIController');
     Route::get('/roundPredictions/{round_id}/{user_id}', 'API\PredictionAPIController@roundPredictions');
