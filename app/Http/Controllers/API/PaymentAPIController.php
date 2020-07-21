@@ -84,7 +84,7 @@ class PaymentAPIController extends AppBaseController
             $movement->save();
             if($movement){
                 $user = User::find($request->user_id);
-                $user->balance = floatval($user->balance) + floatval($product->price);
+                $user->balance = floatval($user->balance) + floatval($product->score_saldo);
                 $user->save();
             }
         }else{

@@ -9,8 +9,9 @@
   477  cd scorefan-admin
   478  php artisan migrate
   479  composer u -vvv
-  480  php artisan vendor:pubÃlish
+  480  php artisan vendor:pubï¿½lish
   481  php artisan vendor:publish
   482  php artisan ui bootstrap --auth
   483  php artisan infyom:publish
   484  php artisan infyom.publish:layout
+php artisan infyom:api_scaffold Product --fieldsFile=/Applications/MAMP/htdocs/adminScorefan/resources/model_schemas/Product.json

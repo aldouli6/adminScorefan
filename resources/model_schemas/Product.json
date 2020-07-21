@@ -71,6 +71,19 @@
         "inIndex": true,
         "inView": true
     },
+
+    {
+        "name": "score_saldo",
+        "dbType": "double",
+        "htmlType": "number",
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": false,
+        "inView": true
+    },
     {
         "name": "created_at",
         "dbType": "timestamp",

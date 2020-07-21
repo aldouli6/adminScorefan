@@ -27,6 +27,11 @@
     {!! Form::label('price', __('models/products.fields.price').':') !!}
     <p>{{ $product->price }}</p>
 </div>
+<!-- Price Field -->
+<div class="form-group">
+    {!! Form::label('score_saldo', __('models/products.fields.score_saldo').':') !!}
+    <p>{{ $product->score_saldo }}</p>
+</div>
 
 <!-- Created At Field -->
 <div class="form-group">

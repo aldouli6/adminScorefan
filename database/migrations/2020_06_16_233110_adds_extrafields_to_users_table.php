@@ -21,7 +21,7 @@ class AddsExtrafieldsToUsersTable extends Migration
             $table->string('token_facebook')->nullable();
             $table->boolean('terms')->default(true);
             $table->boolean('privacy_notice')->default(true);
-            $table->double('balance')->nullable();;
+            $table->double('balance')->nullable();
         });
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');

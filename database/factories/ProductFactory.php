@@ -13,6 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->word,
         'img_url' => $faker->word,
         'price' => $faker->word,
+        'score_saldo' => $faker->word,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')
     ];

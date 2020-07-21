@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Product
  * @package App\Models
- * @version June 15, 2020, 11:35 pm UTC
+ * @version July 20, 2020, 11:58 pm UTC
  *
  * @property boolean $enabled
  * @property integer $category_id
  * @property string $name
  * @property string $img_url
  * @property number $price
+ * @property number $score_saldo
  */
 class Product extends Model
 {
@@ -32,7 +33,8 @@ class Product extends Model
         'category_id',
         'name',
         'img_url',
-        'price'
+        'price',
+        'score_saldo'
     ];
 
     /**
@@ -46,7 +48,8 @@ class Product extends Model
         'category_id' => 'integer',
         'name' => 'string',
         'img_url' => 'string',
-        'price' => 'double'
+        'price' => 'double',
+        'score_saldo' => 'double'
     ];
 
     /**
@@ -57,7 +60,6 @@ class Product extends Model
     public static $rules = [
         'category_id' => 'required',
         'name' => 'required',
-        'img_url' => 'required',
         'price' => 'required'
     ];
 

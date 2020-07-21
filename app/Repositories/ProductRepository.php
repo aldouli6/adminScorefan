@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class ProductRepository
  * @package App\Repositories
- * @version June 15, 2020, 11:35 pm UTC
+ * @version July 20, 2020, 11:58 pm UTC
 */
 
 class ProductRepository extends BaseRepository
@@ -21,7 +21,8 @@ class ProductRepository extends BaseRepository
         'category_id',
         'name',
         'img_url',
-        'price'
+        'price',
+        'score_saldo'
     ];
 
     /**

@@ -11,6 +11,7 @@ return array (
     'name' => 'Name',
     'img_url' => 'Img Url',
     'price' => 'Price',
+    'score_saldo' => 'Score Saldo',
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
   ),
