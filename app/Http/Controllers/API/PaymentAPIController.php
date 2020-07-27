@@ -75,6 +75,7 @@ class PaymentAPIController extends AppBaseController
     {
         $product = Product::find($request->product_id);
         $category = Category::find($product->category_id);
+        $salida="";
         if($category->affect_balance){
             $movement = new Movement;
             $movement->description = 'Compra de '.$product->name;
@@ -86,6 +87,7 @@ class PaymentAPIController extends AppBaseController
                 $user = User::find($request->user_id);
                 $user->balance = floatval($user->balance) + floatval($product->score_saldo);
                 $user->save();
+                $salida = 'Su nuevo balance de Score Saldo es de: '.$user->balance;
             }
         }else{
             $accesory = new Accessory;
@@ -101,11 +103,12 @@ class PaymentAPIController extends AppBaseController
                 $movement->product_id = $request->product_id;
                 $movement->movement =0;
                 $movement->save();
+                $salida = 'Se realizó la compra de '.$product->name;
             }
         }
 
         return $this->sendResponse(
-            $user->toArray(),
+            $salida,
             __('messages.saved', ['model' => __('models/payments.singular')])
         );
     }

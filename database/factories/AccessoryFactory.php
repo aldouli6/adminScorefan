@@ -11,6 +11,9 @@ $factory->define(Accessory::class, function (Faker $faker) {
         'enabled' => $faker->word,
         'user_id' => $faker->word,
         'product_id' => $faker->randomDigitNotNull,
+        'category_id' => $faker->randomDigitNotNull,
+        'pos_x' => $faker->randomDigitNotNull,
+        'pos_y' => $faker->randomDigitNotNull,
         'selected' => $faker->word,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')

@@ -1,4 +1,5 @@
   469  php artisan migrate:rollback --step=1
+  php artisan migrate:rollback --path=/database/migrations/your-specific-migration.php
   470  php artisan infyom:rollback League scaffold
   471  php artisan infyom:scaffold League
   472  php artisan migrate
@@ -14,4 +15,9 @@
   482  php artisan ui bootstrap --auth
   483  php artisan infyom:publish
   484  php artisan infyom.publish:layout
-php artisan infyom:api_scaffold Product --fieldsFile=/Applications/MAMP/htdocs/adminScorefan/resources/model_schemas/Product.json
+  php artisan infyom:rollback $MODEL_NAME $COMMAND_TYPE 
+php artisan infyom:api_scaffold Accessory --fieldsFile=/Applications/MAMP/htdocs/adminScorefan/resources/model_schemas/Accessory.json
+
+php artisan infyom:rollback Accessory api_scaffold
+php artisan migrate:rollback --path=/database/migrations/2020_06_15_235433_create_accessories_table.php
+php artisan migrate --path=/database/migrations/2020_07_23_233730_create_accessories_table.php

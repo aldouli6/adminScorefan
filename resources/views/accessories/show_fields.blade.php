@@ -15,6 +15,23 @@
     {!! Form::label('product_id', __('models/accessories.fields.product_id').':') !!}
     <p>{{ $productItems[$accessory->product_id ]  ?? 'Disabled'}}</p>
 </div>
+<!-- Category Id Field -->
+<div class="form-group">
+    {!! Form::label('product_id', __('models/accessories.fields.category_id').':') !!}
+    <p>{{ $categoryItems[$accessory->category_id ]  ?? 'Disabled'}}</p>
+</div>
+
+<!-- Pos X Field -->
+<div class="form-group">
+    {!! Form::label('pos_x', __('models/accessories.fields.pos_x').':') !!}
+    <p>{{ $accessory->pos_x }}</p>
+</div>
+
+<!-- Pos Y Field -->
+<div class="form-group">
+    {!! Form::label('pos_y', __('models/accessories.fields.pos_y').':') !!}
+    <p>{{ $accessory->pos_y }}</p>
+</div>
 
 <!-- Selected Field -->
 <div class="form-group">

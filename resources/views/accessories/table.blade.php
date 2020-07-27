@@ -5,8 +5,11 @@
                 <th>@lang('models/accessories.fields.enabled')</th>
         <th>@lang('models/accessories.fields.user_id')</th>
         <th>@lang('models/accessories.fields.product_id')</th>
+        <th>@lang('models/accessories.fields.category_id')</th>
+        <th>@lang('models/accessories.fields.pos_x')</th>
+        <th>@lang('models/accessories.fields.pos_y')</th>
         <th>@lang('models/accessories.fields.selected')</th>
-                <th  >@lang('crud.action')</th>
+                <th >@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +20,9 @@
             </td>
             <td>{{ $userItems[$accessory->user_id ]  ?? 'Disabled'}}</td>
             <td>{{ $productItems[$accessory->product_id ]  ?? 'Disabled'}}</td>
+            <td>{{ $categoryItems[$accessory->category_id ]  ?? 'Disabled'}}</td>
+            <td>{{ $accessory->pos_x }}</td>
+            <td>{{ $accessory->pos_y }}</td>
             <td>@if ($accessory->selected==1) @lang('crud.yes') @else @lang('crud.no') @endif</td>
                 <td>
                     {!! Form::open(['route' => ['accessories.destroy', $accessory->id], 'method' => 'delete']) !!}

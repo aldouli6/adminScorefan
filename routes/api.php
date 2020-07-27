@@ -31,6 +31,8 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
     Route::resource('leagues', 'API\LeagueAPIController');
     Route::resource('tournaments', 'API\TournamentAPIController');
     Route::resource('accessories', 'API\AccessoryAPIController');
+    Route::post('/guardarPerfil', 'API\AccessoryAPIController@guardarPerfil');
+    Route::get('/myAccesoriesFromCategory/{user_id}/{category_id}', 'API\AccessoryAPIController@myAccesoriesFromCategory');
     Route::resource('categories', 'API\CategoryAPIController');
     Route::resource('matches', 'API\MatchAPIController');
     Route::get('/roundMatches/{round_id}', 'API\MatchAPIController@roundMatches');

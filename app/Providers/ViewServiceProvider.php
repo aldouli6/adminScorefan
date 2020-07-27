@@ -106,6 +106,10 @@ class ViewServiceProvider extends ServiceProvider
             $userItems = User::where('enabled','1')->pluck('name','id')->toArray();
             $view->with('userItems', $userItems);
         });
+        View::composer(['accessories.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
         View::composer(['accessories.show_fields'], function ($view) {
             $productItems = Product::where('enabled','1')->pluck('name','id')->toArray();
             $view->with('productItems', $productItems);
@@ -114,6 +118,10 @@ class ViewServiceProvider extends ServiceProvider
             $userItems = User::where('enabled','1')->pluck('name','id')->toArray();
             $view->with('userItems', $userItems);
         });
+        View::composer(['accessories.show_fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
         View::composer(['accessories.table'], function ($view) {
             $productItems = Product::where('enabled','1')->pluck('name','id')->toArray();
             $view->with('productItems', $productItems);
@@ -121,6 +129,10 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['accessories.table'], function ($view) {
             $userItems = User::where('enabled','1')->pluck('name','id')->toArray();
             $view->with('userItems', $userItems);
+        });
+        View::composer(['accessories.table'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
         });
         View::composer(['predictions.fields'], function ($view) {
             $matches = Match::all()->map->only('id', 'team_local_id', 'team_visitor_id', 'date_time');

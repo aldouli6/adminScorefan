@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateAccessoryAPIRequest;
 use App\Http\Requests\API\UpdateAccessoryAPIRequest;
 use App\Models\Accessory;
+use App\Models\Product;
 use App\Repositories\AccessoryRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -147,6 +148,20 @@ class AccessoryAPIController extends AppBaseController
         return $this->sendResponse(
             $id,
             __('messages.deleted', ['model' => __('models/accessories.singular')])
+        );
+    }
+    public function myAccesoriesFromCategory(Request $request)
+    {
+        $accessories = Accessory::where('user_id',$request->user_id)
+                    ->where('category_id',$request->category_id)
+                    ->get();
+        foreach ($accessories as $key => $accessory) {
+            $accessory['product_name']=Product::find($accessory['product_id'])->name;
+        }
+        $response= $accessories;
+        return $this->sendResponse(
+            $response,
+            __('messages.retrieved', ['model' => __('models/accessories.plural')])
         );
     }
 }
