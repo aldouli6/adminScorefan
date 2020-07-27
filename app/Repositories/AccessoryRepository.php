@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class AccessoryRepository
  * @package App\Repositories
- * @version July 23, 2020, 11:37 pm UTC
+ * @version July 27, 2020, 4:08 pm UTC
 */
 
 class AccessoryRepository extends BaseRepository
@@ -21,8 +21,6 @@ class AccessoryRepository extends BaseRepository
         'user_id',
         'product_id',
         'category_id',
-        'pos_x',
-        'pos_y',
         'selected'
     ];
 

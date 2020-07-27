@@ -8,14 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Accessory
  * @package App\Models
- * @version July 23, 2020, 11:37 pm UTC
+ * @version July 27, 2020, 4:08 pm UTC
  *
  * @property boolean $enabled
  * @property integer $user_id
  * @property integer $product_id
  * @property integer $category_id
- * @property integer $pos_x
- * @property integer $pos_y
  * @property boolean $selected
  */
 class Accessory extends Model
@@ -34,8 +32,6 @@ class Accessory extends Model
         'user_id',
         'product_id',
         'category_id',
-        'pos_x',
-        'pos_y',
         'selected'
     ];
 
@@ -50,8 +46,6 @@ class Accessory extends Model
         'user_id' => 'integer',
         'product_id' => 'integer',
         'category_id' => 'integer',
-        'pos_x' => 'integer',
-        'pos_y' => 'integer',
         'selected' => 'boolean'
     ];
 
@@ -63,9 +57,7 @@ class Accessory extends Model
     public static $rules = [
         'user_id' => 'required',
         'product_id' => 'required',
-        'category_id' => 'required',
-        'pos_x' => 'required',
-        'pos_y' => 'required'
+        'category_id' => 'required'
     ];
 
     

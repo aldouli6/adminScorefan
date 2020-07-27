@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class CategoryRepository
  * @package App\Repositories
- * @version June 15, 2020, 11:08 pm UTC
+ * @version July 27, 2020, 4:18 pm UTC
 */
 
 class CategoryRepository extends BaseRepository
@@ -19,7 +19,9 @@ class CategoryRepository extends BaseRepository
     protected $fieldSearchable = [
         'enabled',
         'name',
-        'affect_balance'
+        'affect_balance',
+        'pos_x',
+        'pos_y'
     ];
 
     /**

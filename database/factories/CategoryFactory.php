@@ -12,6 +12,8 @@ $factory->define(Category::class, function (Faker $faker) {
         'name' => $faker->word,
         'img_url' => $faker->word,
         'affect_balance' => $faker->word,
+        'pos_x' => $faker->word,
+        'pos_y' => $faker->word,
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')
     ];

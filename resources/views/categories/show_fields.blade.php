@@ -22,6 +22,18 @@
     <p>{{ $category->affect_balance }}</p>
 </div>
 
+<!-- Pos X Field -->
+<div class="form-group">
+    {!! Form::label('pos_x', __('models/categories.fields.pos_x').':') !!}
+    <p>{{ $category->pos_x }}</p>
+</div>
+
+<!-- Pos Y Field -->
+<div class="form-group">
+    {!! Form::label('pos_y', __('models/categories.fields.pos_y').':') !!}
+    <p>{{ $category->pos_y }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', __('models/categories.fields.created_at').':') !!}

@@ -13,31 +13,17 @@
     {!! Form::label('user_id', 'User Id:') !!}
     {!! Form::select('user_id', $userItems, null, ['class' => 'form-control']) !!}
 </div>
-
 <!-- Category Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('category_id', 'Category Id:') !!}
     {!! Form::select('category_id', $categoryItems, null, ['class' => 'form-control']) !!}
 </div>
-
-<!-- Product Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('product_id', 'Product Id:') !!}
     {!! Form::select('product_id', $productItems, null, ['class' => 'form-control']) !!}
 </div>
 
 
-<!-- Pos X Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('pos_x', __('models/accessories.fields.pos_x').':') !!}
-    {!! Form::number('pos_x', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Pos Y Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('pos_y', __('models/accessories.fields.pos_y').':') !!}
-    {!! Form::number('pos_y', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- 'bootstrap / Toggle Switch Selected Field' -->
 <div class="form-group col-sm-6">

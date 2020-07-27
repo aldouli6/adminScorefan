@@ -59,6 +59,31 @@
         "inIndex": false,
         "inView": true
     },
+
+    {
+        "name": "pos_x",
+        "dbType": "double",
+        "htmlType": "number",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "pos_y",
+        "dbType": "double",
+        "htmlType": "number",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
     {
         "name": "created_at",
         "dbType": "timestamp",

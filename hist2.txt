@@ -16,8 +16,8 @@
   483  php artisan infyom:publish
   484  php artisan infyom.publish:layout
   php artisan infyom:rollback $MODEL_NAME $COMMAND_TYPE 
-php artisan infyom:api_scaffold Accessory --fieldsFile=/Applications/MAMP/htdocs/adminScorefan/resources/model_schemas/Accessory.json
+php artisan infyom:api_scaffold Category --fieldsFile=/Applications/MAMP/htdocs/adminScorefan/resources/model_schemas/Category.json
 
-php artisan infyom:rollback Accessory api_scaffold
-php artisan migrate:rollback --path=/database/migrations/2020_06_15_235433_create_accessories_table.php
-php artisan migrate --path=/database/migrations/2020_07_23_233730_create_accessories_table.php
+php artisan infyom:rollback Category api_scaffold
+php artisan migrate:rollback --path=/database/migrations/2020_06_15_230853_create_categories_table.php
+php artisan migrate --path=/database/migrations/2020_07_27_161944_add_pos_to_categories.php

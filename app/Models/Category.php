@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Category
  * @package App\Models
- * @version June 15, 2020, 11:08 pm UTC
+ * @version July 27, 2020, 4:18 pm UTC
  *
  * @property boolean $enabled
  * @property string $name
  * @property string $img_url
  * @property boolean $affect_balance
+ * @property number $pos_x
+ * @property number $pos_y
  */
 class Category extends Model
 {
@@ -30,7 +32,9 @@ class Category extends Model
         'enabled',
         'name',
         'img_url',
-        'affect_balance'
+        'affect_balance',
+        'pos_x',
+        'pos_y'
     ];
 
     /**
@@ -43,7 +47,9 @@ class Category extends Model
         'enabled' => 'boolean',
         'name' => 'string',
         'img_url' => 'string',
-        'affect_balance' => 'boolean'
+        'affect_balance' => 'boolean',
+        'pos_x' => 'double',
+        'pos_y' => 'double'
     ];
 
     /**
@@ -53,7 +59,8 @@ class Category extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'img_url' => 'required'
+        'pos_x' => 'required',
+        'pos_y' => 'required'
     ];
 
     

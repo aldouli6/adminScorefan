@@ -20,8 +20,6 @@ class CreateAccessoriesTable extends Migration
             $table->biginteger('user_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->integer('category_id')->unsigned();
-            $table->integer('pos_x');
-            $table->integer('pos_y');
             $table->boolean('selected')->default(true);
             $table->timestamps();
             $table->softDeletes();
