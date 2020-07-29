@@ -20,4 +20,4 @@ php artisan infyom:api_scaffold Category --fieldsFile=/Applications/MAMP/htdocs/
 
 php artisan infyom:rollback Category api_scaffold
 php artisan migrate:rollback --path=/database/migrations/2020_06_15_230853_create_categories_table.php
-php artisan migrate --path=/database/migrations/2020_07_27_161944_add_pos_to_categories.php
+php artisan migrate --path=/database/migrations/2020_07_27_163604_add_height_to_categories.php

@@ -95,6 +95,7 @@ class PaymentAPIController extends AppBaseController
             $accesory->user_id = $request->user_id;
             $accesory->product_id = $request->product_id;
             $accesory->selected = false;
+            $accesory->category_id = $product->category_id;
             $accesory->save();
             if($accesory){
                 $movement = new Movement;

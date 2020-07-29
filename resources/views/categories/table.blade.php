@@ -6,6 +6,7 @@
         <th>@lang('models/categories.fields.name')</th>
         <th>@lang('models/categories.fields.pos_x')</th>
         <th>@lang('models/categories.fields.pos_y')</th>
+        <th>@lang('models/categories.fields.height')</th>
                 <th>@lang('crud.action')</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
             <td>{{ $category->name }}</td>
             <td>{{ $category->pos_x }}</td>
             <td>{{ $category->pos_y }}</td>
+            <td>{{ $category->height }}</td>
                 <td>
                     {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

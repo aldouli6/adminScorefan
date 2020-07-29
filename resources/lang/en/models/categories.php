@@ -13,6 +13,7 @@ return array (
     'created_at' => 'Created At',
     'pos_x' => 'Posición X',
     'pos_y' => 'Posición Y',
+    'height' => 'Height',
     'updated_at' => 'Updated At',
   ),
 );

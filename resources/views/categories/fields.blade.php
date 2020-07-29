@@ -40,13 +40,19 @@
 <!-- Pos X Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('pos_x', __('models/categories.fields.pos_x').':') !!}
-    {!! Form::number('pos_x', null, ['class' => 'form-control']) !!}
+    {!! Form::number('pos_x', null, ['class' => 'form-control','step' => '0.01']) !!}
 </div>
 
 <!-- Pos Y Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('pos_y', __('models/categories.fields.pos_y').':') !!}
-    {!! Form::number('pos_y', null, ['class' => 'form-control']) !!}
+    {!! Form::number('pos_y', null, ['class' => 'form-control','step' => '0.01']) !!}
+</div>
+
+<!-- Height Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('height', __('models/categories.fields.height').':') !!}
+    {!! Form::number('height', null, ['class' => 'form-control','step' => '0.01']) !!}
 </div>
 
 <!-- Submit Field -->

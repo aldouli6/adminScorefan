@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class CategoryRepository
  * @package App\Repositories
- * @version July 27, 2020, 4:18 pm UTC
+ * @version July 27, 2020, 4:31 pm UTC
 */
 
 class CategoryRepository extends BaseRepository
@@ -21,7 +21,8 @@ class CategoryRepository extends BaseRepository
         'name',
         'affect_balance',
         'pos_x',
-        'pos_y'
+        'pos_y',
+        'height'
     ];
 
     /**

@@ -34,6 +34,12 @@
     <p>{{ $category->pos_y }}</p>
 </div>
 
+<!-- Height Field -->
+<div class="form-group">
+    {!! Form::label('height', __('models/categories.fields.height').':') !!}
+    <p>{{ $category->height }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', __('models/categories.fields.created_at').':') !!}

@@ -6,6 +6,8 @@ use App\Http\Requests\API\CreateAccessoryAPIRequest;
 use App\Http\Requests\API\UpdateAccessoryAPIRequest;
 use App\Models\Accessory;
 use App\Models\Product;
+use App\Models\Team;
+use App\User;
 use App\Repositories\AccessoryRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -159,6 +161,31 @@ class AccessoryAPIController extends AppBaseController
             $accessory['product_name']=Product::find($accessory['product_id'])->name;
         }
         $response= $accessories;
+        return $this->sendResponse(
+            $response,
+            __('messages.retrieved', ['model' => __('models/accessories.plural')])
+        );
+    }
+    public function guardarPerfil(Request $request)
+    {
+        $datas=$request->all();
+        foreach ($datas as $key => $value) {
+            Accessory::where('category_id',$value['categoria'] )
+            ->where('user_id', $value['user_id'])
+            ->update(['selected' => false]);
+            Accessory::where('product_id',$value['producto'] )
+            ->update(['selected' => true]);
+        }
+        return $this->sendResponse(
+            'Se guardaron los accesorios al avar',
+            __('messages.retrieved', ['model' => __('models/accessories.plural')])
+        );
+    }
+    public function resumenPerfil(Request $request)
+    {
+        $user = User::find($request->user_id, ['team_id', 'balance']);
+        $user['team'] =  Team::find($user->team_id)->name;
+        $response= $user;
         return $this->sendResponse(
             $response,
             __('messages.retrieved', ['model' => __('models/accessories.plural')])
