@@ -81,7 +81,7 @@ class PaymentAPIController extends AppBaseController
             $movement->description = 'Compra de '.$product->name;
             $movement->user_id = $request->user_id;
             $movement->product_id = $request->product_id;
-            $movement->movement =$product->price;
+            $movement->movement =$product->score_saldo;
             $movement->save();
             if($movement){
                 $user = User::find($request->user_id);

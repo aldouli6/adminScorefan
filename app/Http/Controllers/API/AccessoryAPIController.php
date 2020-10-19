@@ -11,6 +11,7 @@ use App\User;
 use App\Repositories\AccessoryRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Validator;
 use Response;
 
 /**
@@ -181,6 +182,48 @@ class AccessoryAPIController extends AppBaseController
             __('messages.retrieved', ['model' => __('models/accessories.plural')])
         );
     }
+    public function uploadImage(Request $request) 
+	{
+        // $validator = Validator::make($request->all(), [
+        //     'image' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
+        //  ]);
+        //  if ($validator->fails()) {
+            
+        //     return $this->sendResponse(
+        //         $validator->messages()->first(),
+        //         'error', '500'
+        //     );
+        //  }
+        // dd($request);
+         $uploadFolder = 'avatars';
+         $image = $request->file('image');
+        //  return json_encode($request->file('image'));
+         $save_path = storage_path().'/app/public/avatars/';
+         $image->move($save_path, $request->name.'.png');
+        //  $image_uploaded_path = $image->store/($uploadFolder, 'public');
+        //  $uploadedImageResponse = array(
+        //     "image_name" => basename($image_uploaded_path),
+        //     "image_url" => Storage::disk('public')->url($image_uploaded_path),
+        //     "mime" => $image->getClientMimeType()
+        //  );
+         return $this->sendResponse(
+            $save_path,
+            'success', '200'
+        );
+         
+        // // dd($req/uest->file);
+        // $file=$request->file;
+	    // $save_path = storage_path().'/app/public/avatars/';
+	    // $nombre='avatar_'.$request->user_id.'.png';
+	    // if (file_exists($save_path)) {
+		// 	//echo El directorio existe”;
+		// 	file_put_contents($save_path.$nombre, $file);
+		// } else {
+		// 	mkdir($save_path, 0777, true);
+		// 	file_put_contents($save_path.$nombre, $file);
+		// }
+	    // return $save_path.$nombre;
+	}
     public function resumenPerfil(Request $request)
     {
         $user = User::find($request->user_id, ['team_id', 'balance']);

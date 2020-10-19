@@ -50,6 +50,8 @@ class RoundAPIController extends AppBaseController
     public function actualRound(Request $request)
     {
         $ahora = date("Y-m-d H:i:s");   
+        // $ahora = "2020-07-30 14:22:54";
+        // dd($ahora);
         $round = Round::where('date_time_limit','>',$ahora)
                 ->where('enabled', '1')
                 ->orderBy('date_time_limit')

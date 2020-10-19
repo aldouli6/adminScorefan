@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateResultRequest;
 use App\Repositories\ResultRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Prediction;
+use App\Models\Match;
 use Flash;
 use Response;
 
@@ -55,7 +57,24 @@ class ResultController extends AppBaseController
     public function store(CreateResultRequest $request)
     {
         $input = $request->all();
-
+        // dd($input);
+        
+        $res = ($input['result_local'] == $input['result_visitor'])?'E':(($input['result_local']>$input['result_visitor'])?'L':'V');
+        // dd($res);
+        $predictions = Prediction::where('match_id', $input['match_id'])->get();
+        foreach ($predictions as $key => $prediction) {
+            // dd($prediction);
+            $prediction_points = 0;
+            $prediction_result = ($prediction['prediction_local'] == $prediction['prediction_visitor'])?'E':(($prediction['prediction_local']>$prediction['prediction_visitor'])?'L':'V');
+            // dd($prediction_result);
+            $prediction_points += ($res==$prediction_result)?3:0;
+            $prediction_points += ($input['result_local'] == $prediction['prediction_local']  &&  $input['result_visitor'] == $prediction['prediction_visitor'] )?2:0;
+            
+            Prediction::where('id', $prediction['id'])
+            ->update(['points' => $prediction_points,'state_id' => 3]);
+            Match::where('id', $prediction['match_id'])
+            ->update(['state_id' => 3]);
+        }
         $result = $this->resultRepository->create($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/results.singular')]));
@@ -120,7 +139,20 @@ class ResultController extends AppBaseController
 
             return redirect(route('results.index'));
         }
-
+        $input = $request->all();
+        $res = ($input['result_local'] == $input['result_visitor'])?'E':(($input['result_local']>$input['result_visitor'])?'L':'V');
+       
+        $predictions = Prediction::where('match_id', $input['match_id'])->get();
+        foreach ($predictions as $key => $prediction) {
+            $prediction_points = 0;
+            $prediction_result = ($prediction['prediction_local'] == $prediction['prediction_visitor'])?'E':(($prediction['prediction_local']>$prediction['prediction_visitor'])?'L':'V');
+            $prediction_points += ($res==$prediction_result)?3:0;
+            $prediction_points += ($input['result_local'] == $prediction['prediction_local']  &&  $input['result_visitor'] == $prediction['prediction_visitor'] )?2:0;
+            Prediction::where('id', $prediction['id'])
+          ->update(['points' => $prediction_points, 'state_id' => 3]);
+            Match::where('id', $prediction['match_id'])
+            ->update(['state_id' => 3]);
+        }
         $result = $this->resultRepository->update($request->all(), $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/results.singular')]));

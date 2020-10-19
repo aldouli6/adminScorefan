@@ -30,7 +30,6 @@ class MatchController extends AppBaseController
     public function index(Request $request)
     {
         $matches = $this->matchRepository->all();
-
         return view('matches.index')
             ->with('matches', $matches);
     }

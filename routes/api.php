@@ -32,6 +32,7 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
     Route::resource('tournaments', 'API\TournamentAPIController');
     Route::resource('accessories', 'API\AccessoryAPIController');
     Route::post('/guardarPerfil', 'API\AccessoryAPIController@guardarPerfil');
+    Route::post('/subirimagendata', ['as' => 'subirimagendata', 'uses' => 'API\AccessoryAPIController@uploadImage']);
     Route::get('/resumen/{user_id}', 'API\AccessoryAPIController@resumenPerfil');
     Route::get('/myAccesoriesFromCategory/{user_id}/{category_id}', 'API\AccessoryAPIController@myAccesoriesFromCategory');
     Route::resource('categories', 'API\CategoryAPIController');
@@ -45,4 +46,8 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
     Route::resource('products', 'API\ProductAPIController');
     Route::resource('predictions', 'API\PredictionAPIController');
     Route::get('/roundPredictions/{round_id}/{user_id}', 'API\PredictionAPIController@roundPredictions');
+    Route::get('/top3', 'API\FunctionsAPIController@getTop3');
+    Route::get('/myRank/{user_id}', 'API\FunctionsAPIController@getMyRanking');
+    Route::get('/rank', 'API\FunctionsAPIController@getRanking');
+    Route::get('/tabla', 'API\FunctionsAPIController@getTablaGeneral');
 // });
