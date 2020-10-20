@@ -13,7 +13,7 @@ class AddScoreSaldoToProducts extends Migration
      */
     public function up()
     {
-        Schema::table('php', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             
             $table->double('score_saldo')->nullable();
         });
