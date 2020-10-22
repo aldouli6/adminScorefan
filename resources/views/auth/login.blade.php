@@ -37,7 +37,13 @@
     <div class="login-logo">
         <a href="{{ url('/home') }}"><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 15vw"> </a>
     </div>
-
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+        <div class="alert alert-danger" role="alert">
+            {{$error}}
+        </div>
+        @endforeach
+    @endif
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">@lang('auth.login.title')</p>
@@ -82,7 +88,7 @@
         </form>
 
         <a href="{{ url('/password/reset') }}">@lang('auth.login.forgot_password')</a><br>
-        <a href="{{ url('/register') }}" class="text-center">@lang('auth.login.register_membership')</a>
+        <!-- <a href="{{ url('/register') }}" class="text-center">@lang('auth.login.register_membership')</a> -->
 
     </div>
     <!-- /.login-box-body -->

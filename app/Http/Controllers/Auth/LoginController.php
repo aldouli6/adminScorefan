@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
+use Auth;
 
 class LoginController extends Controller
 {
@@ -19,14 +22,24 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    public function login(Request $request)
+    {
+        
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'user_type' => 'admin'])) {
+            return redirect()->intended('home');
+        }else{
+            return redirect('/login')->withErrors(['Usted no es admin']);
+        }
+    }
+     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // /**
+    //  * Where to redirect users after login.
+    //  *
+    //  * @var string
+    //  */
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

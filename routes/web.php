@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,23 +13,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 // Auth::routes();
- Route::get('/home', 'HomeController@index')->name('home');
+//  Route::get('/home', 'HomeController@index')->name('home');
 
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true, 'register' => false]);
 
-Route::get('/home', 'HomeController@index')->middleware('verified');
-Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
-Route::resource('users', 'UserController')->middleware('auth');
-
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'root:root'])->group(function(){
+    Route::get('/home', 'HomeController@index')->middleware('verified');
+    Route::get('/logout', 'Auth\LoginController@logout')->withoutMiddleware(['root:root']);
+    Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+    Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+    Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+    Route::resource('users', 'UserController');
     Route::resource('states', 'StateController');
     Route::post('/updateEnabled', 'AjaxController@updateEnabled');
     Route::resource('teams', 'TeamController');
