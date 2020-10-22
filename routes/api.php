@@ -18,9 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/logout', 'Api\AuthController@logout');
-Route::post('/register', 'Api\AuthController@register');
-Route::post('/login', 'Api\AuthController@login');
+Route::get('/logout', 'API\AuthController@logout');
+Route::post('/register', 'API\AuthController@register');
+Route::post('/login', 'API\AuthController@login');
 Route::get('/teams', 'API\TeamAPIController@index');
 Route::get('/root/{key}', 'API\FunctionsAPIController@root');
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
