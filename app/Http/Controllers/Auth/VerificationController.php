@@ -46,7 +46,7 @@ class VerificationController extends Controller
         // if (! hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
         //     throw new AuthorizationException;
         // }
-
+        dd($request->user());
         if ($request->user()->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }

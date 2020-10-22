@@ -27,7 +27,7 @@ class LoginController extends Controller
         
         $credentials = $request->only('email', 'password');
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'user_type' => 'admin'])) {
-            return redirect()->intended('home');
+            return redirect('/home');
         }else{
             return redirect('/login')->withErrors(['Usted no es admin']);
         }
