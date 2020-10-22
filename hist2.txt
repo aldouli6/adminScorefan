@@ -25,3 +25,32 @@ sftp://172.16.30.104/var/www/vhosts/eants.ndi.mx/database/migrations/
 
 php artisan infyom:api_scaffold Token --fieldsFile=/var/www/vhosts/eants.ndi.mx/resources/model_schemas/Token.json
 php artisan infyom:rollback Device api_scaffold
+
+ cd scorefancom/public_html/
+git clone https://github.com/aldouli6/adminScorefan.git .
+git add .
+git commit -m "Commit message"
+git config --global user.email "aldouli6@gmail.com"
+git commit -m "Commit message"
+git config --global user.email "aldouli6@gmail.com"
+git config --global user.name "AldoRemoto"
+git commit -m "Commit message"
+git push origin master
+ea-php73 /opt/cpanel/composer/bin/composer install
+php artisan migrate
+php artisan migrate
+php artisan migrate
+cd database/migrations/
+ls -l
+cd ..
+chomod 775 migrations/ -R
+chmod 775 migrations/ -R
+cd migrations/
+ls -l
+cd ..
+cd ..
+php artisan migrate
+php artisan migrate:fresh
+php artisan migrate
+php artisan storage:link
+history

