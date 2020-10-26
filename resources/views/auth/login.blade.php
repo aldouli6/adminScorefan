@@ -37,6 +37,8 @@
     <div class="login-logo">
         <a href="{{ url('/home') }}"><img src="/storage/ScoreFan - Logotipo.png" alt="" style="width: 15vw"> </a>
     </div>
+    <a href="{{ url('/download/android') }}" class="btn btn-large pull-right"><i class="icon-download-alt"> </i> Download Android </a>
+    
     @if($errors->any())
         @foreach ($errors->all() as $error)
         <div class="alert alert-danger" role="alert">

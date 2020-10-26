@@ -25,8 +25,6 @@ Auth::routes(['verify' => true, 'register' => false]);
 Route::middleware(['auth', 'root:root'])->group(function(){
     Route::get('/home', 'HomeController@index')->middleware('verified');
     Route::get('/logout', 'Auth\LoginController@logout')->withoutMiddleware(['root:root']);
-    Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-    Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
     Route::resource('users', 'UserController');
     Route::resource('states', 'StateController');
@@ -44,4 +42,9 @@ Route::middleware(['auth', 'root:root'])->group(function(){
     Route::resource('tournaments', 'TournamentController');
     Route::resource('methods', 'MethodController');
     Route::resource('categories', 'CategoryController');
+});
+Route::get('/download/android', function () {
+    $file = public_path('/storage/app-release.apk');
+    // dd($file);
+    return redirect("https://scorefan.com.mx/storage/ScoreFan.apk");
 });

@@ -24,13 +24,19 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        
+
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'user_type' => 'admin'])) {
-            return redirect('/home');
+        $user = \App\User::where($this->username(), $request->{$this->username()})->first();
+        if ($user && \Hash::check($request->password, $user->password) && $user->user_type != 'admin') {
+            $errors = [$this->username() => 'No es admin.'];
         }else{
-            return redirect('/login')->withErrors(['Usted no es admin']);
+            if(Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])){
+                return redirect('/home');
+            }else{
+                $errors = [$this->username() => 'Credenciales inválidas.'];
+            }
         }
+        return redirect('/login')->withErrors($errors);
     }
      use AuthenticatesUsers;
 
@@ -50,5 +56,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
 }
