@@ -21,7 +21,7 @@ class FunctionsAPIController extends AppBaseController
         team_id,
         '' as cambio
         FROM
-        (SELECT  u.name,u.id as user_id,u.team_id, sum( p.points) as points
+        (SELECT  u.name as name,u.id as user_id,u.team_id, sum( p.points) as points
         FROM users u
         LEFT JOIN predictions p on p.user_id = u.id
         LEFT JOIN matches m on m.id = p.match_id
@@ -38,7 +38,7 @@ class FunctionsAPIController extends AppBaseController
         AND isnull(r.deleted_at)
         AND isnull(t.deleted_at)
         -- AND r.date_time_limit < DATE_SUB(now(),INTERVAL 7 DAY)
-        GROUP BY u.id
+        GROUP BY u.id, u.name, u.team_id
         ORDER by points desc) tabla
         join 
         (SELECT @rownum := 0) r" ));
@@ -49,7 +49,7 @@ class FunctionsAPIController extends AppBaseController
         name,
         points
         FROM
-        (SELECT  u.name,u.id as user_id,sum( p.points) as points
+        (SELECT  u.name as name,u.id as user_id,sum( p.points) as points
         FROM users u
         LEFT JOIN predictions p on p.user_id = u.id
         LEFT JOIN matches m on m.id = p.match_id
@@ -65,14 +65,18 @@ class FunctionsAPIController extends AppBaseController
         AND isnull(r.deleted_at)
         AND isnull(t.deleted_at)
         AND r.date_time_limit < DATE_SUB(now(),INTERVAL 7 DAY)
-        GROUP BY u.id
+        GROUP BY u.id, u.name
         ORDER by points desc) tabla
         join 
         (SELECT @rownum := 0) r") );
 
         foreach ($ranking as $key => $rank) {
             $position = $rank->position;
-            $positionLastWeek = $rankingLastweek->where('user_id', $rank->user_id)->first()->position;
+            if($rankingLastweek->where('user_id', $rank->user_id)->first()==null){
+                $positionLastWeek=0;
+            }else{
+                $positionLastWeek = $rankingLastweek->where('user_id', $rank->user_id)->first()->position;
+            }
             if($position==$positionLastWeek){
                 $rank->cambio='=';
             }elseif ($position>$positionLastWeek) {
@@ -240,15 +244,11 @@ class FunctionsAPIController extends AppBaseController
     public function getMyRanking($user_id)
     {
         $rank = collect(DB::select("SELECT 
-        @rownum := @rownum + 1 AS position, 
-        user_id, 
-        name,
-        points
+        @rownum := @rownum + 1 AS position, user_id,  points
 
         from
         (SELECT 
-        -- t.name, r.name, m.team_local_id, m.team_visitor_id,
-        p.user_id,u.name, SUM(p.points) 'points'  
+        p.user_id, SUM(p.points) 'points'  
         FROM tournaments as t	 
         INNER JOIN rounds as r on r.tournament_id = t.id
         INNER JOIN matches as m on m.round_id = r.id
@@ -265,8 +265,9 @@ class FunctionsAPIController extends AppBaseController
 
         order by points desc
         "))->where('user_id',$user_id)->first();
-        
-
+        if($rank==null){
+            $rank =array('position'=>'-', 'user_id'=>$user_id, 'points'=>'-');
+        }
         return $this->sendResponse(
             $rank,
             __('messages.retrieved', ['model' => __('models/results.singular')])

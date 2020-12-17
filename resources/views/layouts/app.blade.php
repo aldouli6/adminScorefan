@@ -170,7 +170,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
-    var API_URL='http://127.0.0.1:8000';
+    var API_URL='https://scorefan.com.mx';
     $(document).ready( function () {
         $('#{{Request::path()}}-table').DataTable();
         $('.toggle input[type=checkbox]').change(function() {

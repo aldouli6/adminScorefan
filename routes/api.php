@@ -24,7 +24,8 @@ Route::post('/login', 'API\AuthController@login');
 Route::get('/teams', 'API\TeamAPIController@index');
 Route::get('/root/{key}', 'API\FunctionsAPIController@root');
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-// Route::group(['middleware' => 'auth:api'], function() {
+// Route::middleware(['auth:api', 'root:root'])->group(function(){
+Route::middleware(['root:root'])->group(function(){
     Route::resource('states', 'API\StateAPIController');
     // Route::resource('teams', 'API\TeamAPIController');
     Route::resource('rounds', 'API\RoundAPIController');
@@ -51,4 +52,4 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
     Route::get('/myRank/{user_id}', 'API\FunctionsAPIController@getMyRanking');
     Route::get('/rank', 'API\FunctionsAPIController@getRanking');
     Route::get('/tabla', 'API\FunctionsAPIController@getTablaGeneral');
-// });
+});

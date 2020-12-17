@@ -226,8 +226,10 @@ class AccessoryAPIController extends AppBaseController
 	}
     public function resumenPerfil(Request $request)
     {
+
         $user = User::find($request->user_id, ['team_id', 'balance']);
-        $user['team'] =  Team::find($user->team_id)->name;
+        // dd($user);
+        $user['team_id'] =  Team::find($user->team_id)->name;
         $response= $user;
         return $this->sendResponse(
             $response,
