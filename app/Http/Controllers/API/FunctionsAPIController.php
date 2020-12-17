@@ -29,6 +29,7 @@ class FunctionsAPIController extends AppBaseController
         LEFT JOIN tournaments t on t.id = r.tournament_id
         WHERE 1 
         AND u.enabled = 1
+        AND u.user_type = 'user'
         AND m.state_id = 3
         AND r.enabled = 1
         AND t.enabled = 1
